@@ -1,0 +1,351 @@
+.root {
+    -fx-background-color: #2d2d2d;
+}
+
+/* Text Styles */
+.title-text {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-fill: #e0e0e0;
+}
+
+.subtitle-text {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-fill: #e0e0e0;
+}
+
+.normal-text {
+    -fx-font-size: 14px;
+    -fx-fill: #e0e0e0;
+}
+
+.error-label {
+    -fx-text-fill: #ff4444;
+    -fx-font-size: 12px;
+}
+
+/* Auth Screen Styles */
+.auth-form {
+    -fx-padding: 20px;
+    -fx-background-color: #3d3d3d;
+    -fx-background-radius: 10;
+}
+
+.auth-field {
+    -fx-pref-width: 250px;
+    -fx-pref-height: 35px;
+    -fx-background-color: #4d4d4d;
+    -fx-text-fill: #e0e0e0;
+    -fx-border-color: #5d5d5d;
+    -fx-border-radius: 5;
+}
+
+.auth-button {
+    -fx-pref-width: 120px;
+    -fx-pref-height: 35px;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.auth-button:hover {
+    -fx-background-color: #45a049;
+}
+
+/* Lobby Styles */
+.lobby-sidebar {
+    -fx-padding: 20px;
+    -fx-background-color: #3d3d3d;
+    -fx-spacing: 20px;
+}
+
+.sidebar-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-fill: #e0e0e0;
+    -fx-padding: 0 0 20 0;
+}
+
+.sidebar-button {
+    -fx-pref-width: 150px;
+    -fx-pref-height: 40px;
+    -fx-background-color: #5d5d5d;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #6d6d6d;
+}
+
+.lobby-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-fill: #e0e0e0;
+    -fx-padding: 20px;
+}
+
+.game-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-fill: #e0e0e0;
+}
+
+.game-mode-selector {
+    -fx-padding: 20px;
+    -fx-background-color: #3d3d3d;
+    -fx-background-radius: 10;
+}
+
+.mode-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-fill: #e0e0e0;
+}
+
+.mode-radio {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+}
+
+/* Game Screen Styles */
+.game-header {
+    -fx-padding: 15px;
+    -fx-background-color: #3d3d3d;
+}
+
+.back-button {
+    -fx-pref-width: 120px;
+    -fx-pref-height: 30px;
+    -fx-background-color: #5d5d5d;
+    -fx-text-fill: #e0e0e0;
+}
+
+.back-button:hover {
+    -fx-background-color: #6d6d6d;
+}
+
+.status-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-weight: bold;
+}
+
+.player-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #e0e0e0;
+}
+
+.game-button {
+    -fx-pref-width: 150px;
+    -fx-pref-height: 40px;
+    -fx-background-color: #5d5d5d;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+}
+
+.game-button:hover {
+    -fx-background-color: #6d6d6d;
+}
+
+/* Checkers Specific */
+.checkers-info {
+    -fx-padding: 10px;
+    -fx-background-color: #3d3d3d;
+}
+
+.checkers-text {
+    -fx-font-size: 14px;
+    -fx-fill: #e0e0e0;
+}
+
+/* Connect Four Specific */
+.connect-four-top {
+    -fx-padding: 10px;
+    -fx-background-color: #3d3d3d;
+    -fx-background-radius: 5 5 0 0;
+}
+
+.connect-four-drop {
+    -fx-pref-width: 80px;
+    -fx-pref-height: 30px;
+    -fx-background-color: #4d4d4d;
+    -fx-background-radius: 0;
+}
+
+.connect-four-drop:hover {
+    -fx-background-color: #5d5d5d;
+}
+
+/* Chat Styles */
+.chat-container {
+    -fx-padding: 10px;
+    -fx-background-color: #3d3d3d;
+    -fx-spacing: 10px;
+}
+
+.chat-list {
+    -fx-pref-width: 250px;
+    -fx-pref-height: 400px;
+    -fx-background-color: #4d4d4d;
+}
+
+.chat-input {
+    -fx-pref-width: 200px;
+    -fx-pref-height: 30px;
+    -fx-background-color: #4d4d4d;
+    -fx-text-fill: #e0e0e0;
+}
+
+.chat-button {
+    -fx-pref-width: 50px;
+    -fx-pref-height: 30px;
+    -fx-background-color: #5d5d5d;
+    -fx-text-fill: #e0e0e0;
+}
+
+.chat-button:hover {
+    -fx-background-color: #6d6d6d;
+}
+
+/* Profile Styles */
+.profile-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-fill: #e0e0e0;
+    -fx-padding: 20px;
+}
+
+.profile-avatar {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.profile-button {
+    -fx-pref-width: 150px;
+    -fx-pref-height: 40px;
+    -fx-background-color: #5d5d5d;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+}
+
+.profile-button:hover {
+    -fx-background-color: #6d6d6d;
+}
+
+.profile-stats {
+    -fx-padding: 20px;
+    -fx-background-color: #3d3d3d;
+    -fx-background-radius: 10;
+}
+
+.profile-stat {
+    -fx-font-size: 16px;
+    -fx-text-fill: #e0e0e0;
+}
+
+.profile-stat-header {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #e0e0e0;
+    -fx-padding: 10 0 10 0;
+}
+
+.profile-subtitle {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-fill: #e0e0e0;
+    -fx-padding: 20 0 10 0;
+}
+
+.profile-game-stats {
+    -fx-padding: 20px;
+    -fx-background-color: #3d3d3d;
+    -fx-background-radius: 10;
+    -fx-pref-width: 500px;
+}
+
+.profile-tabs {
+    -fx-pref-width: 500px;
+}
+
+.game-stat {
+    -fx-font-size: 14px;
+    -fx-text-fill: #e0e0e0;
+}
+
+/* Game Board Styles */
+.game-board-cell {
+    -fx-background-color: #4d4d4d;
+    -fx-border-color: #3d3d3d;
+}
+
+.game-board-cell:hover {
+    -fx-background-color: #5d5d5d;
+}
+
+.checkers-dark-cell {
+    -fx-background-color: #5d5d5d;
+}
+
+.checkers-light-cell {
+    -fx-background-color: #a0a0a0;
+}
+
+.checkers-piece-red {
+    -fx-fill: #ff4444;
+    -fx-stroke: #cc0000;
+    -fx-stroke-width: 2;
+}
+
+.checkers-piece-black {
+    -fx-fill: #333333;
+    -fx-stroke: #000000;
+    -fx-stroke-width: 2;
+}
+
+.checkers-piece-red-king {
+    -fx-fill: radial-gradient(center 50% 50%, radius 50%, #ff9999, #ff4444);
+    -fx-stroke: #cc0000;
+    -fx-stroke-width: 2;
+}
+
+.checkers-piece-black-king {
+    -fx-fill: radial-gradient(center 50% 50%, radius 50%, #666666, #333333);
+    -fx-stroke: #000000;
+    -fx-stroke-width: 2;
+}
+
+.checkers-selected {
+    -fx-effect: dropshadow(three-pass-box, #ffff00, 10, 0.5, 0, 0);
+}
+
+.tic-tac-toe-cell {
+    -fx-background-color: #4d4d4d;
+    -fx-border-color: #3d3d3d;
+}
+
+.tic-tac-toe-cell:hover {
+    -fx-background-color: #5d5d5d;
+}
+
+.connect-four-cell {
+    -fx-background-color: #4d4d4d;
+    -fx-border-color: #3d3d3d;
+}
+
+.connect-four-piece-red {
+    -fx-fill: #ff4444;
+    -fx-stroke: #cc0000;
+    -fx-stroke-width: 2;
+}
+
+.connect-four-piece-yellow {
+    -fx-fill: #ffcc00;
+    -fx-stroke: #ff9900;
+    -fx-stroke-width: 2;
+}
+
+.winning-cell {
+    -fx-effect: dropshadow(three-pass-box, #00ff00, 10, 0.5, 0, 0);
+}

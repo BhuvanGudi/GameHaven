@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.gamehaven.ui.controllers.ProfileController"
+            stylesheets="@../../styles/main.css"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <ScrollPane AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <VBox alignment="CENTER" spacing="20" prefWidth="580">
+            <Text text="Your Profile" styleClass="profile-title"/>
+
+            <HBox alignment="CENTER" spacing="50">
+                <VBox spacing="15" alignment="CENTER">
+                    <ImageView fx:id="avatarImage" fitHeight="120" fitWidth="120" styleClass="profile-avatar"/>
+                    <Button text="Change Avatar" styleClass="profile-button" onAction="#handleChangeAvatar"/>
+                </VBox>
+
+                <VBox spacing="10" styleClass="profile-stats">
+                    <Label fx:id="usernameLabel" styleClass="profile-stat"/>
+                    <Label text="Game Stats" styleClass="profile-stat-header"/>
+                    <Label fx:id="gamesPlayedLabel" styleClass="profile-stat"/>
+                    <Label fx:id="winsLabel" styleClass="profile-stat"/>
+                    <Label fx:id="lossesLabel" styleClass="profile-stat"/>
+                    <Label fx:id="winRateLabel" styleClass="profile-stat"/>
+                </VBox>
+            </HBox>
+
+            <VBox spacing="10" styleClass="profile-game-stats">
+                <Text text="Game Specific Stats" styleClass="profile-subtitle"/>
+
+                <TabPane styleClass="profile-tabs">
+                    <tabs>
+                        <Tab text="Tic Tac Toe">
+                            <VBox>
+                                <Label fx:id="tttWinsLabel" styleClass="game-stat"/>
+                                <Label fx:id="tttLossesLabel" styleClass="game-stat"/>
+                                <Label fx:id="tttDrawsLabel" styleClass="game-stat"/>
+                            </VBox>
+                        </Tab>
+                        <Tab text="Connect Four">
+                            <VBox>
+                                <Label fx:id="c4WinsLabel" styleClass="game-stat"/>
+                                <Label fx:id="c4LossesLabel" styleClass="game-stat"/>
+                                <Label fx:id="c4DrawsLabel" styleClass="game-stat"/>
+                            </VBox>
+                        </Tab>
+                        <Tab text="Checkers">
+                            <VBox>
+                                <Label fx:id="checkersWinsLabel" styleClass="game-stat"/>
+                                <Label fx:id="checkersLossesLabel" styleClass="game-stat"/>
+                                <Label fx:id="checkersDrawsLabel" styleClass="game-stat"/>
+                            </VBox>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </VBox>
+
+            <Button text="Back to Lobby" styleClass="profile-button" onAction="#handleBackToLobby"/>
+        </VBox>
+    </ScrollPane>
+</AnchorPane>

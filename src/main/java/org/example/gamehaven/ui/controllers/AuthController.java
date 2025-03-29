@@ -1,0 +1,63 @@
+package org.example.gamehaven.ui.controllers;
+
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import org.example.gamehaven.auth.AuthService;
+import org.example.gamehaven.core.SceneManager;
+
+public class AuthController {
+    @FXML private TextField emailField;
+    @FXML private PasswordField passwordField;
+    @FXML private Label errorLabel;
+
+    private final AuthService authService = new AuthService();
+
+    @FXML
+    private void handleLogin() {
+        String email = emailField.getText();
+        String password = passwordField.getText();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            errorLabel.setText("Please enter both email and password");
+            return;
+        }
+
+        authService.login(email, password, new AuthService.AuthCallback() {
+            @Override
+            public void onSuccess() {
+                Platform.runLater(() -> SceneManager.loadScene("lobby/main.fxml"));
+            }
+            @Override
+            public void onError(String error) {
+                Platform.runLater(() -> errorLabel.setText("Login failed: " + error));
+            }
+        });
+    }
+
+    @FXML
+    private void handleRegister() {
+        String email = emailField.getText();
+        String password = passwordField.getText();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            errorLabel.setText("Please enter both email and password");
+            return;
+        }
+
+        authService.register(email, password, email.split("@")[0], new AuthService.AuthCallback() {
+            @Override
+            public void onSuccess() {
+                Platform.runLater(() ->
+                        errorLabel.setText("Registration successful! Please login")
+                );
+            }
+            @Override
+            public void onError(String error) {
+                Platform.runLater(() ->
+                        errorLabel.setText("Registration error: " + error)
+                );
+            }
+        });
+    }
+}

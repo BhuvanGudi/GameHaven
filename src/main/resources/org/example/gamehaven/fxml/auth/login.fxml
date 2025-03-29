@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.gamehaven.ui.controllers.AuthController"
+            stylesheets="@../../styles/main.css"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="50" AnchorPane.bottomAnchor="50" AnchorPane.leftAnchor="150" AnchorPane.rightAnchor="150">
+        <ImageView fitHeight="100" fitWidth="100">
+            <Image url="@../../images/logo.png"/>
+        </ImageView>
+
+        <Text text="GameHaven" styleClass="title-text"/>
+
+        <VBox alignment="CENTER" spacing="10" styleClass="auth-form">
+            <TextField fx:id="emailField" promptText="Email" styleClass="auth-field"/>
+            <PasswordField fx:id="passwordField" promptText="Password" styleClass="auth-field"/>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="loginButton" text="Login" styleClass="auth-button" onAction="#handleLogin"/>
+                <Button fx:id="registerButton" text="Register" styleClass="auth-button" onAction="#handleRegister"/>
+            </HBox>
+
+            <Label fx:id="errorLabel" styleClass="error-label"/>
+        </VBox>
+    </VBox>
+</AnchorPane>

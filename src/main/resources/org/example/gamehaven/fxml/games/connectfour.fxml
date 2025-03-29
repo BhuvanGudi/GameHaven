@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.gamehaven.ui.controllers.ConnectFourController"
+            stylesheets="@../../styles/main.css"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <!-- Game Header -->
+        <HBox styleClass="game-header" alignment="CENTER" spacing="20">
+            <Button text="Back to Lobby" styleClass="back-button" onAction="#handleBackToLobby"/>
+            <Label fx:id="statusLabel" styleClass="status-label" text="Your turn: Red"/>
+            <Label fx:id="playerLabel" styleClass="player-label" text="Player 1 vs Player 2"/>
+        </HBox>
+
+        <!-- Game Content -->
+        <VBox alignment="CENTER" spacing="20" VBox.vgrow="ALWAYS">
+            <!-- Column Selectors -->
+            <HBox alignment="CENTER" spacing="5" styleClass="connect-four-top">
+                <Button fx:id="col0" styleClass="connect-four-drop" onAction="#handleColumn0"/>
+                <Button fx:id="col1" styleClass="connect-four-drop" onAction="#handleColumn1"/>
+                <Button fx:id="col2" styleClass="connect-four-drop" onAction="#handleColumn2"/>
+                <Button fx:id="col3" styleClass="connect-four-drop" onAction="#handleColumn3"/>
+                <Button fx:id="col4" styleClass="connect-four-drop" onAction="#handleColumn4"/>
+                <Button fx:id="col5" styleClass="connect-four-drop" onAction="#handleColumn5"/>
+                <Button fx:id="col6" styleClass="connect-four-drop" onAction="#handleColumn6"/>
+                <Button fx:id="col7" styleClass="connect-four-drop" onAction="#handleColumn7"/>
+                <Button fx:id="col8" styleClass="connect-four-drop" onAction="#handleColumn8"/>
+            </HBox>
+
+            <!-- Game Board -->
+            <GridPane fx:id="gameBoard" hgap="5" vgap="5" alignment="CENTER">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="80"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="80"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="80"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="80"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="80"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="80"/>
+                </rowConstraints>
+            </GridPane>
+
+            <HBox alignment="CENTER" spacing="20">
+                <Button fx:id="restartButton" text="Restart Game" styleClass="game-button" onAction="#handleRestart"/>
+                <Button fx:id="quitButton" text="Quit Game" styleClass="game-button" onAction="#handleQuit"/>
+            </HBox>
+        </VBox>
+    </VBox>
+</AnchorPane>

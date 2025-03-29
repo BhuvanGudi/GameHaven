@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.gamehaven.ui.controllers.TicTacToeController"
+            stylesheets="@../../styles/main.css"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <!-- Game Header -->
+        <HBox styleClass="game-header" alignment="CENTER" spacing="20">
+            <Button text="Back to Lobby" styleClass="back-button" onAction="#handleBackToLobby"/>
+            <Label fx:id="statusLabel" styleClass="status-label" text="Your turn: X"/>
+            <Label fx:id="playerLabel" styleClass="player-label" text="Player 1 vs Player 2"/>
+        </HBox>
+
+        <!-- Game Content -->
+        <VBox alignment="CENTER" spacing="20" VBox.vgrow="ALWAYS">
+            <GridPane fx:id="gameBoard" hgap="5" vgap="5" alignment="CENTER">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
+                </rowConstraints>
+            </GridPane>
+
+            <HBox alignment="CENTER" spacing="20">
+                <Button fx:id="restartButton" text="Restart Game" styleClass="game-button" onAction="#handleRestart"/>
+                <Button fx:id="quitButton" text="Quit Game" styleClass="game-button" onAction="#handleQuit"/>
+            </HBox>
+        </VBox>
+    </VBox>
+</AnchorPane>
