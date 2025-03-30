@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.gamehaven.ui.controllers.LeaderboardController"
+            stylesheets="@../../styles/main.css"
+            prefHeight="700.0" prefWidth="1000.0">
+
+    <VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="20" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+        <Text text="Leaderboard" styleClass="profile-title"/>
+
+        <TableView styleClass="profile-stats" style="-fx-background-radius: 10;" AnchorPane.topAnchor="20" AnchorPane.bottomAnchor="80" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+            <columns>
+                <TableColumn text="Rank" styleClass="profile-stat-header" prefWidth="100"/>
+                <TableColumn text="Player" styleClass="profile-stat-header" prefWidth="300"/>
+                <TableColumn text="Wins" styleClass="profile-stat-header" prefWidth="200"/>
+                <TableColumn text="Win Rate" styleClass="profile-stat-header" prefWidth="200"/>
+            </columns>
+        </TableView>
+
+        <HBox spacing="20">
+            <ComboBox styleClass="auth-field" promptText="Select Game"/>
+            <Button text="Refresh" styleClass="profile-button"/>
+        </HBox>
+
+        <Button text="Back" styleClass="profile-button" onAction="#handleBack"/>
+    </VBox>
+</AnchorPane>

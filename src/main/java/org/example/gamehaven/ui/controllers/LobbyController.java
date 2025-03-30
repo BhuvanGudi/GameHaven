@@ -49,12 +49,12 @@ public class LobbyController implements Initializable {
 
     @FXML
     private void handleLeaderboard() {
-        // Implement leaderboard functionality
+        SceneManager.loadScene("sidebar/leaderboard.fxml");
     }
 
     @FXML
     private void handleSettings() {
-        // Implement settings functionality
+        SceneManager.loadScene("sidebar/settings.fxml");
     }
 
     @FXML

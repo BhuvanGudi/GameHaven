@@ -2,22 +2,19 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.geometry.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.gamehaven.ui.controllers.ConnectFourController"
             stylesheets="@../../styles/main.css"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="700.0" prefWidth="1000.0">
 
     <VBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
         <!-- Game Header -->
-        <HBox styleClass="game-header" alignment="CENTER" spacing="20">
-            <Button text="Back to Lobby" styleClass="back-button" onAction="#handleBackToLobby"/>
-            <Label fx:id="statusLabel" styleClass="status-label" text="Your turn: Red"/>
-            <Label fx:id="playerLabel" styleClass="player-label" text="Player 1 vs Player 2"/>
+        <HBox styleClass="game-header" alignment="CENTER" spacing="30">
+            <Button text="Back to Lobby" styleClass="back-button" onAction="#handleBackToLobby" prefWidth="150"/>
+            <Label fx:id="statusLabel" styleClass="status-label" text="Your turn: X" prefWidth="200"/>
+            <Label fx:id="playerLabel" styleClass="player-label" text="Player 1 vs Player 2" prefWidth="300"/>
         </HBox>
 
         <!-- Game Content -->
@@ -32,27 +29,29 @@
                 <Button fx:id="col5" styleClass="connect-four-drop" onAction="#handleColumn5"/>
                 <Button fx:id="col6" styleClass="connect-four-drop" onAction="#handleColumn6"/>
                 <Button fx:id="col7" styleClass="connect-four-drop" onAction="#handleColumn7"/>
-                <Button fx:id="col8" styleClass="connect-four-drop" onAction="#handleColumn8"/>
             </HBox>
 
             <!-- Game Board -->
             <GridPane fx:id="gameBoard" hgap="5" vgap="5" alignment="CENTER">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="80"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="80"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="80"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="80"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="80"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="80"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="80"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
+                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
                 </rowConstraints>
             </GridPane>
 

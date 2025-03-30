@@ -16,6 +16,7 @@ public class GameServer {
     private DatabaseReference currentGameRef;
     private String gameId;
     private String playerId;
+    private MoveListener moveListener;
 
     public GameServer() {
         initializeFirebase();
@@ -23,9 +24,7 @@ public class GameServer {
     }
 
     private void initializeFirebase() {
-        try {
-            InputStream serviceAccount = getClass().getResourceAsStream("/firebase-config.json");
-
+        try (InputStream serviceAccount = getClass().getResourceAsStream("/firebase-config.json")) {
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                     .setDatabaseUrl("https://gamehaven-default-rtdb.firebaseio.com/")
@@ -37,7 +36,7 @@ public class GameServer {
 
             database = FirebaseDatabase.getInstance().getReference();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to initialize Firebase", e);
         }
     }
 
@@ -63,50 +62,67 @@ public class GameServer {
         setupGameListeners();
     }
 
-    public void makeMove(Object gameId, String moveData) {
-        if (this.gameId != null) {
-            database.child("games").child(this.gameId).child("moves").push().setValueAsync(moveData);
-        }
+    public void makeMove(String gameId, int column) {
+        if (this.gameId == null || !this.gameId.equals(gameId)) return;
+
+        Map<String, Object> move = new HashMap<>();
+        move.put("playerId", playerId);
+        move.put("column", column);
+        move.put("timestamp", ServerValue.TIMESTAMP);
+
+        database.child("games").child(this.gameId).child("moves").push().setValueAsync(move);
+
+        // Update current player
+        database.child("games").child(this.gameId).child("currentPlayer")
+                .setValueAsync(playerId.equals(getOpponentId()) ? playerId : getOpponentId());
     }
 
-    public void listenForMoves(MoveListener moveListener) {
-        if (gameId != null) {
-            database.child("games").child(gameId).child("moves").addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
-                    moveListener.onMoveReceived(snapshot.getValue(String.class));
-                }
-                // Other required methods with empty implementations
-                public void onChildChanged(DataSnapshot snapshot, String previousChildName) {}
-                public void onChildRemoved(DataSnapshot snapshot) {}
-                public void onChildMoved(DataSnapshot snapshot, String previousChildName) {}
-                public void onCancelled(DatabaseError error) {}
-            });
-        }
+    public void setOnOpponentMoveListener(MoveListener listener) {
+        this.moveListener = listener;
+        listenForMoves();
+    }
+
+    private void listenForMoves() {
+        if (gameId == null || moveListener == null) return;
+
+        database.child("games").child(gameId).child("moves")
+                .orderByChild("timestamp")
+                .addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot snapshot, String prevChildName) {
+                        try {
+                            Map<String, Object> move = (Map<String, Object>) snapshot.getValue();
+                            if (move != null && !playerId.equals(move.get("playerId"))) {
+                                long columnLong = (Long) move.get("column");
+                                moveListener.onMoveReceived((int) columnLong);
+                            }
+                        } catch (Exception e) {
+                            System.err.println("Error processing move: " + e.getMessage());
+                        }
+                    }
+
+                    @Override public void onChildChanged(DataSnapshot snapshot, String prevChildName) {}
+                    @Override public void onChildRemoved(DataSnapshot snapshot) {}
+                    @Override public void onChildMoved(DataSnapshot snapshot, String prevChildName) {}
+                    @Override public void onCancelled(DatabaseError error) {
+                        System.err.println("Firebase error: " + error.getMessage());
+                    }
+                });
+    }
+
+    private String getOpponentId() {
+        // This would need proper implementation based on your game state
+        return ""; // Placeholder
     }
 
     private void setupGameListeners() {
-        currentGameRef = database.child("games").child(gameId);
-        currentGameRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                String status = snapshot.child("status").getValue(String.class);
-                String currentPlayer = snapshot.child("currentPlayer").getValue(String.class);
 
-                // Handle game state changes
-                if ("ended".equals(status)) {
-                    // Handle game end
-                }
-            }
+    }
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                System.err.println("Firebase error: " + error.getMessage());
-            }
-        });
+    public void makeMove(Object gameId, String s) {
     }
 
     public interface MoveListener {
-        void onMoveReceived(String moveData);
+        void onMoveReceived(int column);
     }
 }

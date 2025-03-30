@@ -2,6 +2,7 @@ package org.example.gamehaven.ui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -14,6 +15,8 @@ import org.example.gamehaven.multiplayer.GameServer;
 import org.example.gamehaven.core.GameMode;
 
 public class CheckersController {
+    public Button restartButton;
+    public Button quitButton;
     @FXML private GridPane gameBoard;
     @FXML private Label statusLabel;
     @FXML private Label playerLabel;
@@ -39,7 +42,7 @@ public class CheckersController {
         }
 
         initializeBoard();
-        updateCurrentPlayer();
+//        updateCurrentPlayer();
     }
 
     private void initializeBoard() {
@@ -76,7 +79,7 @@ public class CheckersController {
 
             if (isMultiplayer) {
                 gameServer.makeMove(game.getGameId(),
-                        selectedPiece.getRow() + "," + selectedPiece.getCol() + "," + row + "," + col);
+                        Integer.parseInt(selectedPiece.getRow() + "," + selectedPiece.getCol() + "," + row + "," + col));
             }
 
             selectedPiece = null;
@@ -109,7 +112,7 @@ public class CheckersController {
     private void updateCurrentPlayer() {
         String player = game.getCurrentPlayer() == Piece.PieceColor.RED ? "Red" : "Black";
         statusLabel.setText("Current turn: " + player);  // fixed: Removed STR. template
-        currentPlayerImage.setFill(game.getCurrentPlayer().getFxColor());
+//        currentPlayerImage.setFill(game.getCurrentPlayer().getFxColor());
     }
 
     private void setupMultiplayer() {

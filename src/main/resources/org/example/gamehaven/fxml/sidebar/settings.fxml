@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.gamehaven.ui.controllers.SettingsController"
+            stylesheets="@../../styles/main.css"
+            prefHeight="700.0" prefWidth="1000.0">
+
+    <VBox alignment="CENTER" spacing="30" AnchorPane.topAnchor="20" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+        <Text text="Settings" styleClass="profile-title"/>
+
+        <VBox spacing="15" styleClass="profile-stats" style="-fx-background-radius: 10; -fx-padding: 20;">
+            <Label text="Account Settings" styleClass="profile-stat-header"/>
+            <TextField promptText="Change Username" styleClass="auth-field"/>
+            <PasswordField promptText="Change Password" styleClass="auth-field"/>
+            <Button text="Save Changes" styleClass="profile-button"/>
+        </VBox>
+
+        <VBox spacing="15" styleClass="profile-stats" style="-fx-background-radius: 10; -fx-padding: 20;">
+            <Label text="Appearance" styleClass="profile-stat-header"/>
+            <CheckBox text="Dark Mode" styleClass="mode-radio" selected="true"/>
+            <ComboBox promptText="Theme" styleClass="auth-field"/>
+        </VBox>
+
+        <Button text="Back" styleClass="profile-button" onAction="#handleBack"/>
+    </VBox>
+</AnchorPane>

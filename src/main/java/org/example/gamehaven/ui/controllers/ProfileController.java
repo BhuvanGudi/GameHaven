@@ -46,7 +46,7 @@ public class ProfileController {
         lossesLabel.setText("Losses: " + user.getLosses());
         winRateLabel.setText("Win Rate: " + calculateWinRate(user) + "%");
 
-        avatarImage.setImage(new Image(getClass().getResource("/images/avatars/default.png").toExternalForm()));
+        avatarImage.setImage(new Image(String.valueOf(getClass().getResource("/org/example/gamehaven/images/avatars/default_male.png"))));
 
         // Game specific stats
         tttWinsLabel.setText("Tic Tac Toe Wins: " + user.getTttWins());

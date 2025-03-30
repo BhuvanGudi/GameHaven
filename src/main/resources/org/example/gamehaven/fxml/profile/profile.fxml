@@ -10,59 +10,115 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.gamehaven.ui.controllers.ProfileController"
             stylesheets="@../../styles/main.css"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="700.0" prefWidth="1000.0">
 
-    <ScrollPane AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
-        <VBox alignment="CENTER" spacing="20" prefWidth="580">
-            <Text text="Your Profile" styleClass="profile-title"/>
+    <ScrollPane AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+                fitToWidth="true" hbarPolicy="NEVER">
+        <VBox alignment="TOP_CENTER" spacing="30" prefWidth="800" style="-fx-background-color: #2d2d2d;">
+            <!-- Header Section -->
+            <VBox alignment="CENTER" spacing="10" styleClass="profile-stats"
+                  style="-fx-background-radius: 10; -fx-padding: 20;">
+                <Text text="Your Profile" styleClass="profile-title"/>
+                <Separator style="-fx-background-color: #5d5d5d;"/>
+            </VBox>
 
-            <HBox alignment="CENTER" spacing="50">
-                <VBox spacing="15" alignment="CENTER">
-                    <ImageView fx:id="avatarImage" fitHeight="120" fitWidth="120" styleClass="profile-avatar"/>
+            <!-- Main Content -->
+            <HBox alignment="TOP_CENTER" spacing="50" style="-fx-padding: 0 40 0 40;">
+                <!-- Avatar Section -->
+                <VBox spacing="20" alignment="CENTER" styleClass="profile-stats"
+                      style="-fx-background-radius: 10; -fx-pref-width: 300;">
+                    <ImageView fx:id="avatarImage" fitHeight="150" fitWidth="150" styleClass="profile-avatar"/>
                     <Button text="Change Avatar" styleClass="profile-button" onAction="#handleChangeAvatar"/>
+                    <VBox spacing="10" style="-fx-padding: 20 0 0 0;">
+                        <Label text="Account Details" styleClass="profile-stat-header"/>
+                        <Label fx:id="usernameLabel" styleClass="profile-stat"/>
+                    </VBox>
                 </VBox>
 
-                <VBox spacing="10" styleClass="profile-stats">
-                    <Label fx:id="usernameLabel" styleClass="profile-stat"/>
-                    <Label text="Game Stats" styleClass="profile-stat-header"/>
-                    <Label fx:id="gamesPlayedLabel" styleClass="profile-stat"/>
-                    <Label fx:id="winsLabel" styleClass="profile-stat"/>
-                    <Label fx:id="lossesLabel" styleClass="profile-stat"/>
-                    <Label fx:id="winRateLabel" styleClass="profile-stat"/>
+                <!-- Stats Section -->
+                <VBox spacing="20" styleClass="profile-stats"
+                      style="-fx-background-radius: 10; -fx-pref-width: 400;">
+                    <Label text="Overall Statistics" styleClass="profile-stat-header"/>
+                    <GridPane hgap="20" vgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS"/>
+                            <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS"/>
+                        </columnConstraints>
+                        <Label text="Games Played:" styleClass="profile-stat" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label fx:id="gamesPlayedLabel" styleClass="profile-stat" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <Label text="Wins:" styleClass="profile-stat" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label fx:id="winsLabel" styleClass="profile-stat" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        <Label text="Losses:" styleClass="profile-stat" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label fx:id="lossesLabel" styleClass="profile-stat" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        <Label text="Win Rate:" styleClass="profile-stat" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <Label fx:id="winRateLabel" styleClass="profile-stat" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    </GridPane>
                 </VBox>
             </HBox>
 
-            <VBox spacing="10" styleClass="profile-game-stats">
-                <Text text="Game Specific Stats" styleClass="profile-subtitle"/>
+            <!-- Game Specific Stats -->
+            <VBox spacing="15" styleClass="profile-game-stats"
+                  style="-fx-background-radius: 10; -fx-padding: 20;">
+                <Text text="Game Specific Statistics" styleClass="profile-subtitle"/>
+                <Separator style="-fx-background-color: #5d5d5d;"/>
 
                 <TabPane styleClass="profile-tabs">
                     <tabs>
-                        <Tab text="Tic Tac Toe">
-                            <VBox>
-                                <Label fx:id="tttWinsLabel" styleClass="game-stat"/>
-                                <Label fx:id="tttLossesLabel" styleClass="game-stat"/>
-                                <Label fx:id="tttDrawsLabel" styleClass="game-stat"/>
+                        <Tab styleClass="profile-tabs" text="Tic Tac Toe">
+                            <VBox spacing="10" style="-fx-padding: 15;">
+                                <GridPane hgap="20" vgap="8">
+                                    <columnConstraints>
+                                        <ColumnConstraints halignment="LEFT" hgrow="ALWAYS"/>
+                                        <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS"/>
+                                    </columnConstraints>
+                                    <Label text="Wins:" styleClass="game-stat" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                    <Label fx:id="tttWinsLabel" styleClass="game-stat" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                    <Label text="Losses:" styleClass="game-stat" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                    <Label fx:id="tttLossesLabel" styleClass="game-stat" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                    <Label text="Draws:" styleClass="game-stat" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                    <Label fx:id="tttDrawsLabel" styleClass="game-stat" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                </GridPane>
                             </VBox>
                         </Tab>
-                        <Tab text="Connect Four">
-                            <VBox>
-                                <Label fx:id="c4WinsLabel" styleClass="game-stat"/>
-                                <Label fx:id="c4LossesLabel" styleClass="game-stat"/>
-                                <Label fx:id="c4DrawsLabel" styleClass="game-stat"/>
+                        <Tab styleClass="profile-tabs" text="Connect Four">
+                            <VBox spacing="10" style="-fx-padding: 15;">
+                                <GridPane hgap="20" vgap="8">
+                                    <columnConstraints>
+                                        <ColumnConstraints halignment="LEFT" hgrow="ALWAYS"/>
+                                        <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS"/>
+                                    </columnConstraints>
+                                    <Label text="Wins:" styleClass="game-stat" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                    <Label fx:id="c4WinsLabel" styleClass="game-stat" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                    <Label text="Losses:" styleClass="game-stat" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                    <Label fx:id="c4LossesLabel" styleClass="game-stat" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                    <Label text="Draws:" styleClass="game-stat" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                    <Label fx:id="c4DrawsLabel" styleClass="game-stat" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                </GridPane>
                             </VBox>
                         </Tab>
-                        <Tab text="Checkers">
-                            <VBox>
-                                <Label fx:id="checkersWinsLabel" styleClass="game-stat"/>
-                                <Label fx:id="checkersLossesLabel" styleClass="game-stat"/>
-                                <Label fx:id="checkersDrawsLabel" styleClass="game-stat"/>
+                        <Tab styleClass="profile-tabs" text="Checkers">
+                            <VBox spacing="10" style="-fx-padding: 15;">
+                                <GridPane hgap="20" vgap="8">
+                                    <columnConstraints>
+                                        <ColumnConstraints halignment="LEFT" hgrow="ALWAYS"/>
+                                        <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS"/>
+                                    </columnConstraints>
+                                    <Label text="Wins:" styleClass="game-stat" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                    <Label fx:id="checkersWinsLabel" styleClass="game-stat" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                    <Label text="Losses:" styleClass="game-stat" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                    <Label fx:id="checkersLossesLabel" styleClass="game-stat" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                    <Label text="Draws:" styleClass="game-stat" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                    <Label fx:id="checkersDrawsLabel" styleClass="game-stat" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                </GridPane>
                             </VBox>
                         </Tab>
                     </tabs>
                 </TabPane>
             </VBox>
 
-            <Button text="Back to Lobby" styleClass="profile-button" onAction="#handleBackToLobby"/>
+            <!-- Footer -->
+            <Button text="Back to Lobby" styleClass="profile-button" onAction="#handleBackToLobby"
+                    style="-fx-font-size: 16px; -fx-pref-width: 200;"/>
         </VBox>
     </ScrollPane>
 </AnchorPane>
