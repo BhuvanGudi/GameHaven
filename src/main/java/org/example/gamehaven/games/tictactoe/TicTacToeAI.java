@@ -3,7 +3,7 @@ package org.example.gamehaven.games.tictactoe;
 import java.util.Random;
 
 public class TicTacToeAI {
-    private Random random;
+    private final Random random;
 
     public TicTacToeAI() {
         random = new Random();
@@ -18,7 +18,7 @@ public class TicTacToeAI {
         int[] blockingMove = findWinningMove(board, 'X');
         if (blockingMove != null) return blockingMove;
 
-        // Otherwise make a random move
+        // Otherwise, make a random move
         return makeRandomMove(board);
     }
 
@@ -57,11 +57,7 @@ public class TicTacToeAI {
         if (board[0][0] == player && board[1][1] == player && board[2][2] == player) {
             return true;
         }
-        if (board[0][2] == player && board[1][1] == player && board[2][0] == player) {
-            return true;
-        }
-
-        return false;
+        return board[0][2] == player && board[1][1] == player && board[2][0] == player;
     }
 
     private int[] makeRandomMove(char[][] board) {

@@ -1,9 +1,9 @@
 package org.example.gamehaven.games.tictactoe;
 
 public class TicTacToeMove {
-    private int row;
-    private int col;
-    private char player;
+    private final int row;
+    private final int col;
+    private final char player;
 
     public TicTacToeMove(int row, int col, char player) {
         this.row = row;

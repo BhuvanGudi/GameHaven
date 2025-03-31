@@ -4,7 +4,7 @@ public class TicTacToeGame {
     private char[][] board;
     private char currentPlayer;
     private boolean gameOver;
-    private String gameId;
+    private final String gameId;
 
     public TicTacToeGame() {
         board = new char[3][3];
@@ -67,11 +67,7 @@ public class TicTacToeGame {
         if (board[0][0] != ' ' && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
             return true;
         }
-        if (board[0][2] != ' ' && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
-            return true;
-        }
-
-        return false;
+        return board[0][2] != ' ' && board[0][2] == board[1][1] && board[1][1] == board[2][0];
     }
 
     public boolean isBoardFull() {

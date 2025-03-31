@@ -10,10 +10,13 @@ import org.example.gamehaven.games.tictactoe.TicTacToeGame;
 import org.example.gamehaven.games.tictactoe.TicTacToeAI;
 import org.example.gamehaven.multiplayer.GameServer;
 import org.example.gamehaven.core.GameMode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TicTacToeController {
     public Button restartButton;
     public Button quitButton;
+    private static final Logger logger = LoggerFactory.getLogger(TicTacToeController.class);
     @FXML private GridPane gameBoard;
     @FXML private Label statusLabel;
     @FXML private Label playerLabel;
@@ -97,7 +100,10 @@ public class TicTacToeController {
                     });
                 }
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error("AI move thread was interrupted", e);
+                Thread.currentThread().interrupt(); // Restore the interrupted status
+            } catch (Exception e) {
+                logger.error("Error during AI move execution", e);
             }
         }).start();
     }
