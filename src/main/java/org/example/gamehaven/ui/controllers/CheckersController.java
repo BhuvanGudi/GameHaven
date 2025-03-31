@@ -1,13 +1,23 @@
 package org.example.gamehaven.ui.controllers;
 
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Lighting;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import org.example.gamehaven.core.SceneManager;
 import org.example.gamehaven.games.checkers.CheckersGame;
 import org.example.gamehaven.games.checkers.Piece;
@@ -46,13 +56,18 @@ public class CheckersController {
     }
 
     private void initializeBoard() {
+        gameBoard.getChildren().clear();
+
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
-                Circle cell = new Circle(35);
-                cell.setFill((row + col) % 2 == 0 ? Color.valueOf("#4d4d4d") : Color.valueOf("#a0a0a0"));
+                Rectangle cell = new Rectangle(70, 70);
+                cell.getStyleClass().add("checkers-cell");
+                cell.getStyleClass().add((row + col) % 2 == 0 ? "checkers-cell-light" : "checkers-cell-dark");
+
                 int finalRow = row;
                 int finalCol = col;
                 cell.setOnMouseClicked(e -> handleCellClick(finalRow, finalCol, e));
+
                 gameBoard.add(cell, col, row);
 
                 Piece piece = game.getPieceAt(row, col);
@@ -65,11 +80,29 @@ public class CheckersController {
 
     private void addPieceToBoard(int row, int col, Piece piece) {
         Circle pieceCircle = new Circle(30);
-        pieceCircle.setFill(piece.getColor().getFxColor());
-        pieceCircle.setStroke(Color.DARKGRAY);
-        pieceCircle.setUserData(piece);
-        pieceCircle.setOnMouseClicked(this::handlePieceClick);
-        gameBoard.add(pieceCircle, col, row);
+        pieceCircle.getStyleClass().add("checkers-piece");
+        pieceCircle.getStyleClass().add(piece.getColor() == Piece.PieceColor.RED ?
+                "checkers-piece-red" : "checkers-piece-black");
+
+        if (piece.isKing()) {
+            Circle kingIndicator = new Circle(12);
+            kingIndicator.getStyleClass().add("checkers-king-indicator");
+
+            StackPane pieceStack = new StackPane(pieceCircle, kingIndicator);
+            pieceStack.setUserData(piece);
+            pieceStack.setOnMouseClicked(this::handlePieceClick);
+
+            GridPane.setHalignment(pieceStack, HPos.CENTER);
+            GridPane.setValignment(pieceStack, VPos.CENTER);
+            gameBoard.add(pieceStack, col, row);
+        } else {
+            pieceCircle.setUserData(piece);
+            pieceCircle.setOnMouseClicked(this::handlePieceClick);
+
+            GridPane.setHalignment(pieceCircle, HPos.CENTER);
+            GridPane.setValignment(pieceCircle, VPos.CENTER);
+            gameBoard.add(pieceCircle, col, row);
+        }
     }
 
     private void handleCellClick(int row, int col, MouseEvent event) {
@@ -89,15 +122,35 @@ public class CheckersController {
     }
 
     private void handlePieceClick(MouseEvent event) {
-        Piece clickedPiece = (Piece) ((Node) event.getSource()).getUserData();
+        Node source = (Node) event.getSource();
+        Piece clickedPiece = (Piece) source.getUserData();
+
         if (clickedPiece.getColor() == game.getCurrentPlayer()) {
+            // Clear previous selection effect
+            gameBoard.getChildren().forEach(node -> {
+                if (node.getEffect() instanceof DropShadow) {
+                    DropShadow effect = (DropShadow) node.getEffect();
+                    if (effect.getColor() == Color.YELLOW) {
+                        // Reset to normal shadow
+                        node.setEffect(new DropShadow(10, Color.rgb(0, 0, 0, 0.7)));
+                    }
+                }
+            });
+
+            // Highlight a selected piece
             selectedPiece = clickedPiece;
+            source.setEffect(new DropShadow(15, Color.YELLOW));
+
+            // Update selected piece indicator
             selectedPieceImage.setFill(selectedPiece.getColor().getFxColor());
         }
     }
 
     private void updateBoard() {
-        gameBoard.getChildren().removeIf(node -> node instanceof Circle && node.getUserData() instanceof Piece);
+        // Remove only piece nodes, keep board squares
+        gameBoard.getChildren().removeIf(node ->
+                (node instanceof Circle && node.getUserData() instanceof Piece) ||
+                        (node instanceof StackPane && node.getUserData() instanceof Piece));
 
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {

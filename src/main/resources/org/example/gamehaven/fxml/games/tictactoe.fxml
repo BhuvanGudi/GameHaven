@@ -19,16 +19,16 @@
 
         <!-- Game Content -->
         <VBox alignment="CENTER" spacing="20" VBox.vgrow="ALWAYS">
-            <GridPane fx:id="gameBoard" hgap="5" vgap="5" alignment="CENTER">
+            <GridPane fx:id="gameBoard" hgap="4" vgap="4" alignment="CENTER">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="10" prefWidth="100"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="10" prefWidth="100"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="10" prefWidth="100"/>
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="100"/>
+                    <RowConstraints vgrow="NEVER" minHeight="10" prefHeight="100"/>
+                    <RowConstraints vgrow="NEVER" minHeight="10" prefHeight="100"/>
+                    <RowConstraints vgrow="NEVER" minHeight="10" prefHeight="100"/>
                 </rowConstraints>
             </GridPane>
 

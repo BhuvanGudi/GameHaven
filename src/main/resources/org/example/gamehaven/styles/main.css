@@ -1,5 +1,6 @@
 .root {
     -fx-background-color: #2d2d2d;
+    -fx-font-size: 16px;
 }
 
 /* Text Styles */
@@ -69,10 +70,10 @@
 
 .sidebar-button {
     -fx-pref-width: 150px;
-    -fx-pref-height: 40px;
+    -fx-pref-height: 50px;
     -fx-background-color: #5d5d5d;
     -fx-text-fill: #e0e0e0;
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
 }
 
 .sidebar-button:hover {
@@ -83,11 +84,11 @@
     -fx-font-size: 28px;
     -fx-font-weight: bold;
     -fx-fill: #e0e0e0;
-    -fx-padding: 20px;
+    -fx-padding: 30px;
 }
 
 .game-title {
-    -fx-font-size: 18px;
+    -fx-font-size: 22px;
     -fx-font-weight: bold;
     -fx-fill: #e0e0e0;
 }
@@ -111,71 +112,91 @@
 
 /* Game Screen Styles */
 .game-header {
+    -fx-background-color: #5D2906;
     -fx-padding: 15px;
-    -fx-background-color: #3d3d3d;
 }
 
 .back-button {
     -fx-pref-width: 120px;
     -fx-pref-height: 30px;
-    -fx-background-color: #5d5d5d;
-    -fx-text-fill: #e0e0e0;
+    -fx-background-color: linear-gradient(#A0522D, #8B4513);
+    -fx-text-fill: #F5DEB3;
+    -fx-font-weight: bold;
+    -fx-border-color: #F5DEB3;
+    -fx-border-width: 1;
 }
 
 .back-button:hover {
-    -fx-background-color: #6d6d6d;
+    -fx-background-color: linear-gradient(#B8860B, #A0522D);
 }
 
 .status-label {
-    -fx-font-size: 16px;
-    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 20px;
+    -fx-text-fill: #F5DEB3;
     -fx-font-weight: bold;
 }
 
 .player-label {
     -fx-font-size: 16px;
-    -fx-text-fill: #e0e0e0;
+    -fx-text-fill: #F5DEB3;
+    -fx-font-weight: bold;
 }
 
 .game-button {
     -fx-pref-width: 150px;
     -fx-pref-height: 40px;
-    -fx-background-color: #5d5d5d;
-    -fx-text-fill: #e0e0e0;
+    -fx-background-color: linear-gradient(#A0522D, #8B4513);
+    -fx-text-fill: #F5DEB3;
     -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-color: #F5DEB3;
+    -fx-border-width: 1;
 }
 
 .game-button:hover {
-    -fx-background-color: #6d6d6d;
+    -fx-background-color: linear-gradient(#B8860B, #A0522D);
 }
 
 /* Checkers Specific */
 .checkers-info {
+    -fx-background-color: #442e1e;
     -fx-padding: 10px;
-    -fx-background-color: #3d3d3d;
 }
 
 .checkers-text {
     -fx-font-size: 14px;
-    -fx-fill: #e0e0e0;
+    -fx-fill: #f0d9b5;
+    -fx-font-weight: bold;
 }
 
 /* Connect Four Specific */
 .connect-four-top {
-    -fx-padding: 10px;
-    -fx-background-color: #3d3d3d;
-    -fx-background-radius: 5 5 0 0;
+    -fx-background-color: #5D2906;
+    -fx-background-radius: 10 10 0 0;
+    -fx-padding: 10;
 }
 
 .connect-four-drop {
-    -fx-pref-width: 80px;
-    -fx-pref-height: 30px;
-    -fx-background-color: #4d4d4d;
-    -fx-background-radius: 0;
+    -fx-pref-width: 50px;
+    -fx-pref-height: 40px;
+    -fx-min-width: 50px;
+    -fx-min-height: 40px;
+    -fx-max-width: 50px;
+    -fx-max-height: 40px;
+    -fx-background-color: linear-gradient(#A0522D, #8B4513);
+    -fx-text-fill: #F5DEB3;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-background-radius: 5;
+    -fx-border-color: #5D2906;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 1);
 }
 
 .connect-four-drop:hover {
-    -fx-background-color: #5d5d5d;
+    -fx-background-color: linear-gradient(#B8860B, #A0522D);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0, 0, 2);
 }
 
 /* Chat Styles */
@@ -274,196 +295,6 @@
     -fx-text-fill: #e0e0e0;
 }
 
-/* Game Board Styles */
-.game-board-cell {
-    -fx-background-color: #4d4d4d;
-    -fx-border-color: #3d3d3d;
-}
-
-.game-board-cell:hover {
-    -fx-background-color: #5d5d5d;
-}
-
-.checkers-dark-cell {
-    -fx-background-color: #5d5d5d;
-}
-
-.checkers-light-cell {
-    -fx-background-color: #a0a0a0;
-}
-
-.checkers-piece-red {
-    -fx-fill: #ff4444;
-    -fx-stroke: #cc0000;
-    -fx-stroke-width: 2;
-}
-
-.checkers-piece-black {
-    -fx-fill: #333333;
-    -fx-stroke: #000000;
-    -fx-stroke-width: 2;
-}
-
-.checkers-piece-red-king {
-    -fx-fill: radial-gradient(center 50% 50%, radius 50%, #ff9999, #ff4444);
-    -fx-stroke: #cc0000;
-    -fx-stroke-width: 2;
-}
-
-.checkers-piece-black-king {
-    -fx-fill: radial-gradient(center 50% 50%, radius 50%, #666666, #333333);
-    -fx-stroke: #000000;
-    -fx-stroke-width: 2;
-}
-
-.checkers-selected {
-    -fx-effect: dropshadow(three-pass-box, #ffff00, 10, 0.5, 0, 0);
-}
-
-.tic-tac-toe-cell {
-    -fx-background-color: #4d4d4d;
-    -fx-border-color: #3d3d3d;
-}
-
-.tic-tac-toe-cell:hover {
-    -fx-background-color: #5d5d5d;
-}
-
-.connect-four-cell {
-    -fx-background-color: #4d4d4d;
-    -fx-border-color: #3d3d3d;
-}
-
-.connect-four-piece-red {
-    -fx-fill: #ff4444;
-    -fx-stroke: #cc0000;
-    -fx-stroke-width: 2;
-}
-
-.connect-four-piece-yellow {
-    -fx-fill: #ffcc00;
-    -fx-stroke: #ff9900;
-    -fx-stroke-width: 2;
-}
-
-.winning-cell {
-    -fx-effect: dropshadow(three-pass-box, #00ff00, 10, 0.5, 0, 0);
-}
-
-/* Increase base font sizes */
-.root {
-    -fx-font-size: 16px; /* Added base font size */
-}
-
-/* Larger game titles */
-.game-title {
-    -fx-font-size: 22px; /* Increased from 18px */
-}
-
-/* More prominent status labels */
-.status-label {
-    -fx-font-size: 20px; /* Increased from 16px */
-}
-
-/* Larger game board cells */
-.game-board-cell {
-    -fx-min-width: 80px;
-    -fx-min-height: 80px;
-    -fx-pref-width: 80px;
-    -fx-pref-height: 80px;
-}
-
-/* More padding in lobby */
-.lobby-title {
-    -fx-padding: 30px; /* Increased from 20px */
-}
-
-/* Larger sidebar buttons */
-.sidebar-button {
-    -fx-pref-height: 50px; /* Increased from 40px */
-    -fx-font-size: 16px; /* Increased from 14px */
-}
-
-/* Connect Four Piece Styles */
-.connect-four-piece-red {
-    -fx-fill: radial-gradient(center 50% 50%, radius 50%, #ff7777, #ff0000);
-    -fx-stroke: #cc0000;
-    -fx-stroke-width: 3;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 5, 0.2, 0, 1);
-}
-
-.connect-four-piece-yellow {
-    -fx-fill: radial-gradient(center 50% 50%, radius 50%, #ffff77, #ffcc00);
-    -fx-stroke: #ff9900;
-    -fx-stroke-width: 3;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 5, 0.2, 0, 1);
-}
-
-/* Connect Four Cell Styles */
-.connect-four-cell {
-    -fx-background-color: #1a237e; /* Dark blue background */
-    -fx-background-radius: 50%; /* Circular cells */
-    -fx-border-color: #303f9f;
-    -fx-border-width: 2;
-    -fx-border-radius: 50%;
-}
-
-.connect-four-cell:hover {
-    -fx-background-color: #303f9f;
-}
-
-/* Drop Button Styles */
-.connect-four-drop {
-    -fx-pref-width: 120px;
-    -fx-pref-height: 40px;
-    -fx-background-color: #3d5afe;
-    -fx-background-radius: 5;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 1);
-}
-
-.connect-four-drop:hover {
-    -fx-background-color: #536dfe;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0, 0, 2);
-}
-
-/* Winning Pieces */
-.winning-cell {
-    -fx-effect: dropshadow(three-pass-box, #00ff00, 15, 0.7, 0, 0),
-                innershadow(gaussian, #ffffff, 10, 0.5, 0, 0);
-    -fx-stroke: #ffffff;
-    -fx-stroke-width: 4;
-}
-/* Board Background */
-#gameBoard {
-    -fx-background-color: #0d47a1; /* Dark blue background */
-    -fx-border-color: #1a237e;
-    -fx-border-width: 10;
-    -fx-border-radius: 5;
-    -fx-padding: 15;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 15, 0, 0, 5);
-}
-
-/* Column Indicators */
-.connect-four-top {
-    -fx-padding: 15px;
-    -fx-background-color: #1a237e;
-    -fx-background-radius: 5 5 0 0;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);
-}
-
-/* Connect Four Animations */
-.connect-four-cell {
-    -fx-opacity: 0.9;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.2, 0, 1);
-    -fx-transition: -fx-effect 0.3s, -fx-opacity 0.3s;
-}
-
-.winning-piece {
-    -fx-effect: dropshadow(gaussian, #00ff00, 15, 0.7, 0, 0);
-}
-
 .profile-tabs .tab {
     -fx-fill: #5d5d5d;
     -fx-pref-width: 300;
@@ -473,4 +304,166 @@
 
 .profile-tabs .tab .tab-label {
     -fx-alignment: CENTER;
+}
+
+/* Game Board Styles */
+.game-board-cell {
+    -fx-min-width: 80px;
+    -fx-min-height: 80px;
+    -fx-pref-width: 80px;
+    -fx-pref-height: 80px;
+}
+
+/* Checkers Board Styles */
+.checkers-board {
+    -fx-background-color: #634832;
+    -fx-padding: 10;
+    -fx-border-color: #442e1e;
+    -fx-border-width: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.checkers-cell {
+    -fx-min-width: 70px;
+    -fx-min-height: 70px;
+    -fx-pref-width: 70px;
+    -fx-pref-height: 70px;
+    -fx-max-width: 70px;
+    -fx-max-height: 70px;
+    -fx-border-width: 0;
+}
+
+.checkers-cell-light {
+    -fx-fill: #f0d9b5;
+}
+
+.checkers-cell-dark {
+    -fx-fill: #946f51;
+}
+
+.checkers-piece {
+    -fx-stroke-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 10, 0, 0, 0);
+}
+
+.checkers-piece-red {
+    -fx-fill: radial-gradient(center 50% 50%, radius 50%, #f4f4f4, #d0d0d0);
+    -fx-stroke: #a0a0a0;
+}
+
+.checkers-piece-black {
+    -fx-fill: radial-gradient(center 50% 50%, radius 50%, #303030, #101010);
+    -fx-stroke: #000000;
+}
+
+.checkers-king-indicator {
+    -fx-fill: gold;
+    -fx-stroke: goldenrod;
+    -fx-stroke-width: 1;
+}
+
+.checkers-selected {
+    -fx-effect: dropshadow(three-pass-box, #ffff00, 10, 0.5, 0, 0);
+}
+
+/* Connect Four Wooden Theme Styles */
+.connect-four-background {
+    -fx-background-color: #2d2d2d;
+}
+
+.connect-four-board-container {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #C0C0C0 0%, #E0E0E0 50%, #C0C0C0 100%);
+    -fx-background-radius: 15;
+    -fx-padding: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 20, 0, 0, 0);
+}
+
+.connect-four-board {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #8B4513 0%, #A0522D 50%, #8B4513 100%);
+    -fx-background-radius: 10;
+    -fx-border-color: #5D2906;
+    -fx-border-width: 10;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 15, 0.3, 0, 5), innershadow(gaussian, rgba(255,255,255,0.2), 5, 0.5, 0, 0);
+    -fx-padding: 15;
+}
+
+.connect-four-cell {
+    -fx-background-color: #5D2906;
+    -fx-background-radius: 50%;
+    -fx-border-color: #3D1E06;
+    -fx-border-width: 3;
+    -fx-border-radius: 50%;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.7), 10, 0.5, 0, 0);
+}
+
+.connect-four-cell:hover {
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.7), 10, 0.5, 0, 0), innershadow(gaussian, rgba(255,215,0,0.3), 5, 0.5, 0, 0);
+}
+
+.connect-four-piece-red {
+    -fx-fill: radial-gradient(center 50% 50%, radius 50%, #ff7777, #cc0000);
+    -fx-stroke: #8B0000;
+    -fx-stroke-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 5, 0.2, 0, 1);
+}
+
+.connect-four-piece-yellow {
+    -fx-fill: radial-gradient(center 50% 50%, radius 50%, #ffff99, #ffcc00);
+    -fx-stroke: #B8860B;
+    -fx-stroke-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 5, 0.2, 0, 1);
+}
+
+.wood-drop-button {
+    -fx-pref-width: 50px;
+    -fx-pref-height: 40px;
+    -fx-min-width: 50px;
+    -fx-min-height: 40px;
+    -fx-max-width: 50px;
+    -fx-max-height: 40px;
+    -fx-background-color: linear-gradient(#A0522D, #8B4513);
+    -fx-text-fill: #F5DEB3;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-background-radius: 5;
+    -fx-border-color: #5D2906;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 1);
+}
+
+.wood-drop-button:hover {
+    -fx-background-color: linear-gradient(#B8860B, #A0522D);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0, 0, 2);
+}
+
+.button-container {
+    -fx-background-color: #5D2906;
+    -fx-background-radius: 0 0 10 10;
+    -fx-padding: 15;
+}
+
+.wood-button {
+    -fx-pref-width: 150px;
+    -fx-pref-height: 40px;
+    -fx-background-color: linear-gradient(#A0522D, #8B4513);
+    -fx-text-fill: #F5DEB3;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-border-color: #F5DEB3;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 1);
+}
+
+.wood-button:hover {
+    -fx-background-color: linear-gradient(#B8860B, #A0522D);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0, 0, 2);
+}
+
+.winning-cell {
+    -fx-effect: dropshadow(three-pass-box, #FFD700, 15, 0.7, 0, 0), innershadow(gaussian, #ffffff, 10, 0.5, 0, 0);
+    -fx-stroke: #FFD700;
+    -fx-stroke-width: 3;
 }

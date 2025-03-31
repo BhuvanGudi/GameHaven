@@ -1,15 +1,15 @@
 package org.example.gamehaven.ui.controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import org.example.gamehaven.core.SceneManager;
 import org.example.gamehaven.games.tictactoe.TicTacToeGame;
+import org.example.gamehaven.games.tictactoe.TicTacToeAI;
 import org.example.gamehaven.multiplayer.GameServer;
 import org.example.gamehaven.core.GameMode;
-
-import java.util.Arrays;
 
 public class TicTacToeController {
     public Button restartButton;
@@ -19,8 +19,10 @@ public class TicTacToeController {
     @FXML private Label playerLabel;
 
     private TicTacToeGame game;
+    private TicTacToeAI ai;
     private GameServer gameServer;
     private boolean isMultiplayer;
+    private boolean isPlayerTurn;
 
     @FXML
     public void initialize() {
@@ -32,13 +34,17 @@ public class TicTacToeController {
             playerLabel.setText("Waiting for opponent...");
             setupMultiplayer();
         } else {
-            playerLabel.setText("Single Player");
+            ai = new TicTacToeAI();
+            playerLabel.setText("Player vs Computer");
         }
+        isPlayerTurn = true; // Assuming the first player starts
 
         initializeBoard();
+        updateGameStatus();
     }
 
     private void initializeBoard() {
+        gameBoard.getChildren().clear();
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 Button button = new Button();
@@ -46,16 +52,17 @@ public class TicTacToeController {
                 button.setStyle("-fx-font-size: 24px;");
                 int finalRow = row;
                 int finalCol = col;
-                button.setOnAction(e -> handleMove(finalRow, finalCol));
+                button.setOnAction(_ -> handleMove(finalRow, finalCol));
                 gameBoard.add(button, col, row);
             }
         }
     }
 
     private void handleMove(int row, int col) {
-        if (game.isGameOver()) return;
+        if (game.isGameOver() || (!isMultiplayer && !isPlayerTurn)) return;
 
         Button button = (Button) getNodeByRowColumnIndex(row, col);
+        assert button != null;
         if (!button.getText().isEmpty()) return;
 
         button.setText(String.valueOf(game.getCurrentPlayer()));
@@ -66,6 +73,33 @@ public class TicTacToeController {
         }
 
         updateGameStatus();
+
+        // If a single player and game isn't over, let AI make a move
+        if (!isMultiplayer && !game.isGameOver()) {
+            isPlayerTurn = false;
+            makeAIMove();
+        }
+    }
+
+    private void makeAIMove() {
+        new Thread(() -> {
+            try {
+                Thread.sleep(500); // Small delay for better UX
+                int[] move = ai.makeMove(game.getBoard());
+                if (move != null) {
+                    Platform.runLater(() -> {
+                        Button button = (Button) getNodeByRowColumnIndex(move[0], move[1]);
+                        assert button != null;
+                        button.setText(String.valueOf(game.getCurrentPlayer()));
+                        game.makeMove(move[0], move[1]);
+                        updateGameStatus();
+                        isPlayerTurn = true;
+                    });
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     private Node getNodeByRowColumnIndex(int row, int col) {
@@ -79,20 +113,27 @@ public class TicTacToeController {
 
     private void updateGameStatus() {
         if (game.checkWin()) {
-            statusLabel.setText(Arrays.toString(game.getCurrentPlayer()) + " wins!");
+            statusLabel.setText(game.getCurrentPlayer() + " wins!");
         } else if (game.isBoardFull()) {
             statusLabel.setText("It's a draw!");
         } else {
-            statusLabel.setText("Your turn: " + Arrays.toString(game.getCurrentPlayer()));
+            statusLabel.setText("Current turn: " + game.getCurrentPlayer());
+            if (!isMultiplayer) {
+                playerLabel.setText(isPlayerTurn ? "Your turn" : "Computer thinking...");
+            }
         }
     }
 
     private void setupMultiplayer() {
         // Implement multiplayer logic using GameServer
+        // This would involve setting up listeners for opponent's moves
+        // and updating the UI accordingly
     }
 
     @FXML
-    private void handleRestart() {SceneManager.loadScene("games/tictactoe.fxml");}
+    private void handleRestart() {
+        SceneManager.loadScene("games/tictactoe.fxml");
+    }
 
     @FXML
     private void handleQuit() {

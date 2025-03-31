@@ -16,7 +16,7 @@ public class ConnectFourController {
     @FXML private Label playerLabel;
     @FXML private Button restartButton;
     @FXML private Button quitButton;
-    @FXML private Button col0, col1, col2, col3, col4, col5, col6, col7, col8;
+    @FXML private Button col0, col1, col2, col3, col4, col5, col6, col7;
 
     private ConnectFourGame game;
 
@@ -31,9 +31,10 @@ public class ConnectFourController {
         gameBoard.getChildren().clear();
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
-                Circle circle = new Circle(30);
+                Circle circle = new Circle(25); // Smaller circles to fit cells
                 circle.setFill(Color.TRANSPARENT);
                 circle.setStroke(Color.BLACK);
+                circle.getStyleClass().add("connect-four-cell");
                 gameBoard.add(circle, col, row);
             }
         }
@@ -44,9 +45,15 @@ public class ConnectFourController {
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 Circle circle = (Circle) gameBoard.getChildren().get(row * 8 + col);
+
+                // Remove any previous style classes except connect-four-cell
+                circle.getStyleClass().removeAll("connect-four-piece-red", "connect-four-piece-yellow", "winning-cell");
+
                 if (board[row][col] == 'R') {
+                    circle.getStyleClass().add("connect-four-piece-red");
                     circle.setFill(Color.RED);
                 } else if (board[row][col] == 'Y') {
+                    circle.getStyleClass().add("connect-four-piece-yellow");
                     circle.setFill(Color.YELLOW);
                 } else {
                     circle.setFill(Color.TRANSPARENT);
@@ -55,6 +62,7 @@ public class ConnectFourController {
         }
 
         if (game.checkWin()) {
+            highlightWinningCells();
             statusLabel.setText("Player " + (game.getCurrentPlayer() == 'R' ? "Yellow" : "Red") + " wins!");
         } else if (game.isBoardFull()) {
             statusLabel.setText("Game ended in a draw!");
@@ -63,10 +71,28 @@ public class ConnectFourController {
         }
     }
 
+    private void highlightWinningCells() {
+        // This is a placeholder for highlighting winning cells
+        // You would need to modify your game logic to track winning cells
+        // and then apply the winning-cell style to those specific circles
+
+        // Example (assuming your game tracks winning positions):
+        // if (game.getWinningPositions() != null) {
+        //     for (int[] pos : game.getWinningPositions()) {
+        //         int row = pos[0];
+        //         int col = pos[1];
+        //         Circle circle = (Circle) gameBoard.getChildren().get(row * 8 + col);
+        //         circle.getStyleClass().add("winning-cell");
+        //     }
+        // }
+    }
+
     private void handleColumn(int col) {
-        int row = game.makeMove(col);
-        if (row != -1) {
-            updateUI();
+        if (!game.isGameOver()) {
+            int row = game.makeMove(col);
+            if (row != -1) {
+                updateUI();
+            }
         }
     }
 

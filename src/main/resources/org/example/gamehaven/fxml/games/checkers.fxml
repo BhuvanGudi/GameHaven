@@ -23,24 +23,24 @@
         <VBox alignment="CENTER" spacing="20" VBox.vgrow="ALWAYS">
             <GridPane fx:id="gameBoard" hgap="5" vgap="5" alignment="CENTER">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="70" prefWidth="70" maxWidth="70"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="70" prefWidth="70" maxWidth="70"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="70" prefWidth="70" maxWidth="70"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="70" prefWidth="70" maxWidth="70"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="70" prefWidth="70" maxWidth="70"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="70" prefWidth="70" maxWidth="70"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="70" prefWidth="70" maxWidth="70"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="70" prefWidth="70" maxWidth="70"/>
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="150"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="150"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="150"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="150"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="150"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="150"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="150"/>
-                    <RowConstraints vgrow="SOMETIMES" minHeight="10" prefHeight="150"/>
+                    <RowConstraints vgrow="NEVER" minHeight="70" prefHeight="70" maxHeight="70"/>
+                    <RowConstraints vgrow="NEVER" minHeight="70" prefHeight="70" maxHeight="70"/>
+                    <RowConstraints vgrow="NEVER" minHeight="70" prefHeight="70" maxHeight="70"/>
+                    <RowConstraints vgrow="NEVER" minHeight="70" prefHeight="70" maxHeight="70"/>
+                    <RowConstraints vgrow="NEVER" minHeight="70" prefHeight="70" maxHeight="70"/>
+                    <RowConstraints vgrow="NEVER" minHeight="70" prefHeight="70" maxHeight="70"/>
+                    <RowConstraints vgrow="NEVER" minHeight="70" prefHeight="70" maxHeight="70"/>
+                    <RowConstraints vgrow="NEVER" minHeight="70" prefHeight="70" maxHeight="70"/>
                 </rowConstraints>
             </GridPane>
 
