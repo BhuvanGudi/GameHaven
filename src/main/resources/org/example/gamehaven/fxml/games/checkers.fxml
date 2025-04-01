@@ -53,9 +53,9 @@
         <!-- Game Info -->
         <HBox styleClass="checkers-info" alignment="CENTER" spacing="10">
             <Text text="Selected Piece: " styleClass="checkers-text"/>
-            <ImageView fitHeight="30" fitWidth="30"/>
+            <ImageView fx:id="selectedPieceImage" fitHeight="30" fitWidth="30"/>
             <Text text="Current Player: " styleClass="checkers-text"/>
-            <ImageView fitHeight="30" fitWidth="30"/>
+            <ImageView fx:id="currentPlayerImage" fitHeight="30" fitWidth="30"/>
         </HBox>
     </VBox>
 </AnchorPane>

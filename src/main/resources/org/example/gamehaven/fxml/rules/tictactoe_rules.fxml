@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.gamehaven.games.tictactoe.TicTacToeRules"
+            prefHeight="600.0" prefWidth="800.0"
+            stylesheets="@../../styles/tictactoe_rules.css">
+
+    <VBox alignment="CENTER" spacing="10" AnchorPane.topAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0">
+
+        <Label wrapText="true" text="Tic-Tac-Toe Rules" styleClass="title-label">
+            <font>
+                <Font name="System Bold" size="28.0"/>
+            </font>
+            <VBox.margin>
+                <Insets top="20.0" bottom="10.0"/>
+            </VBox.margin>
+        </Label>
+
+        <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" styleClass="rules-tab-pane">
+            <Tab text="Basic Rules" styleClass="rule-tab">
+                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                    <VBox spacing="20" styleClass="rules-section">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label wrapText="true" text="Game Objective" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="The objective of Tic-Tac-Toe is to be the first player to form a line of three of your symbols (X or O) horizontally, vertically, or diagonally on a 3×3 grid."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <Label wrapText="true" text="Game Board" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <HBox alignment="CENTER" styleClass="board-container">
+                            <GridPane styleClass="tictactoe-board" alignment="CENTER" hgap="5" vgap="5">
+                                <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="0"/>
+                                <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="0"/>
+                                <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="0"/>
+                                <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="1"/>
+                                <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="1"/>
+                                <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="1"/>
+                                <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="2"/>
+                                <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="2"/>
+                                <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="2"/>
+                            </GridPane>
+                            <Label text="A standard 3×3 Tic-Tac-Toe board." wrapText="true" styleClass="board-caption"/>
+                        </HBox>
+
+                        <Label wrapText="true" text="Game Setup" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="• The game is played on a 3×3 grid.&#10;• Two players take turns: one plays as X, the other as O.&#10;• X traditionally goes first."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <Label wrapText="true" text="How to Play" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="1. Players take turns placing their symbol (X or O) in an empty cell.&#10;2. The first player to get three of their symbols in a row wins.&#10;3. If all cells are filled and no player has three in a row, the game is a draw."
+                               wrapText="true" styleClass="rule-text"/>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <Tab text="Game Scenarios" styleClass="rule-tab">
+                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                    <VBox spacing="25" styleClass="rules-section">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label wrapText="true" text="Winning Scenarios" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="To win at Tic-Tac-Toe, a player must place three of their marks in a horizontal, vertical, or diagonal row."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <HBox spacing="40" alignment="CENTER">
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Horizontal Win" styleClass="scenario-title"/>
+                                <GridPane styleClass="tictactoe-board" alignment="CENTER" hgap="5" vgap="5">
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, win-cell"
+                                               GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, win-cell"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, win-cell"
+                                               GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol, win-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="2"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol, win-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="2"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol, win-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="2"/>
+                                </GridPane>
+                            </VBox>
+
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Vertical Win" styleClass="scenario-title"/>
+                                <GridPane styleClass="tictactoe-board" alignment="CENTER" hgap="5" vgap="5">
+                                    <Rectangle width="60" height="60" styleClass="board-cell, win-cell"
+                                               GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, win-cell"
+                                               GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, win-cell"
+                                               GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="2"/>
+
+                                    <Label wrapText="true" text="O" styleClass="o-symbol, win-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol, win-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol, win-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="2"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="2"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="2"/>
+                                </GridPane>
+                            </VBox>
+
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Diagonal Win" styleClass="scenario-title"/>
+                                <GridPane styleClass="tictactoe-board" alignment="CENTER" hgap="5" vgap="5">
+                                    <Rectangle width="60" height="60" styleClass="board-cell, win-cell"
+                                               GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, win-cell"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, win-cell"
+                                               GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+
+                                    <Label wrapText="true" text="X" styleClass="x-symbol, win-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol, win-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="2"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="2"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol, win-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="2"/>
+                                </GridPane>
+                            </VBox>
+                        </HBox>
+
+                        <Label wrapText="true" text="Draw Scenario" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="A draw (also called a tie or cat's game) occurs when all nine squares are filled and neither player has three in a row."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <HBox alignment="CENTER" styleClass="scenario-box">
+                            <VBox alignment="CENTER">
+                                <Label wrapText="true" text="Draw/Tie" styleClass="scenario-title"/>
+                                <GridPane styleClass="tictactoe-board" alignment="CENTER" hgap="5" vgap="5">
+                                    <Rectangle width="60" height="60" styleClass="board-cell, draw-cell"
+                                               GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, draw-cell"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, draw-cell"
+                                               GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, draw-cell"
+                                               GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, draw-cell"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, draw-cell"
+                                               GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, draw-cell"
+                                               GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, draw-cell"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, draw-cell"
+                                               GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="2"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="2"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="2"/>
+                                </GridPane>
+                                <Label wrapText="true" text="Neither player can win in this position" styleClass="board-caption"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <Tab text="Strategy" styleClass="rule-tab">
+                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                    <VBox spacing="15" styleClass="rules-section">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label wrapText="true" text="Basic Strategy" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="• Center Control: The center position offers the most win opportunities (4 possible lines).&#10;• Corner Strategy: Corners are the second-best positions (3 possible lines each).&#10;• Block Opponent: Always block your opponent when they have two in a row.&#10;• Fork Creation: Create situations where you have two potential winning lines."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <HBox alignment="CENTER" spacing="40">
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Center Position" styleClass="scenario-title"/>
+                                <GridPane styleClass="tictactoe-board" alignment="CENTER" hgap="5" vgap="5">
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, strategy-cell"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="2"/>
+
+                                    <Label wrapText="true" text="X" styleClass="x-symbol, strategy-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="1"/>
+                                </GridPane>
+                                <Label wrapText="true" text="First move advantage" styleClass="board-caption"/>
+                            </VBox>
+
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Blocking Move" styleClass="scenario-title"/>
+                                <GridPane styleClass="tictactoe-board" alignment="CENTER" hgap="5" vgap="5">
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, strategy-cell"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="2"/>
+
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="O" styleClass="o-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="2"/>
+                                    <Label wrapText="true" text="X" styleClass="x-symbol, strategy-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="2"/>
+                                </GridPane>
+                                <Label wrapText="true" text="Block opponent's win" styleClass="board-caption"/>
+                            </VBox>
+                        </HBox>
+
+                        <Label wrapText="true" text="Advanced Tips" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="• First Move: If playing first, the center or a corner are optimal opening moves.&#10;• Second Move: If your opponent takes the center, take a corner. If they take a corner, take the center.&#10;• Opposite Corners: If your opponent has taken a corner, taking the opposite corner can force a draw."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <Label wrapText="true" text="Perfect Play" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="With perfect play from both players, Tic-Tac-Toe always ends in a draw. This makes it a 'solved game'."
+                               wrapText="true" styleClass="rule-text"/>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <Tab text="Variants" styleClass="rule-tab">
+                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                    <VBox spacing="15" styleClass="rules-section">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label wrapText="true" text="Game Variations" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label wrapText="true" text="3D Tic-Tac-Toe" styleClass="subsection-header">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+
+                        <Label wrapText="true" text="Played on a 3×3×3 cube with winning lines of three in any direction, including diagonals through the cube."
+                               styleClass="rule-text"/>
+
+                        <Label wrapText="true" text="Ultimate Tic-Tac-Toe" styleClass="subsection-header">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="Played on nine 3×3 boards arranged in a 3×3 grid. Your move determines which board your opponent must play in next."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <HBox alignment="CENTER">
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Ultimate Tic-Tac-Toe" styleClass="scenario-title"/>
+                                <GridPane styleClass="ultimate-board" alignment="CENTER" hgap="10" vgap="10">
+
+                                    <GridPane styleClass="mini-board" hgap="2" vgap="2" GridPane.columnIndex="0"
+                                              GridPane.rowIndex="0">
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                    </GridPane>
+
+                                    <GridPane styleClass="mini-board" hgap="2" vgap="2" GridPane.columnIndex="1"
+                                              GridPane.rowIndex="0">
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                    </GridPane>
+
+                                    <GridPane styleClass="mini-board" hgap="2" vgap="2" GridPane.columnIndex="2"
+                                              GridPane.rowIndex="0">
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                    </GridPane>
+
+                                    <GridPane styleClass="mini-board" hgap="2" vgap="2" GridPane.columnIndex="0"
+                                              GridPane.rowIndex="1">
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                    </GridPane>
+
+                                    <GridPane styleClass="mini-board, active-board" hgap="2" vgap="2"
+                                              GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell, active-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                    </GridPane>
+
+                                    <GridPane styleClass="mini-board" hgap="2" vgap="2" GridPane.columnIndex="2"
+                                              GridPane.rowIndex="1">
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                    </GridPane>
+
+                                    <GridPane styleClass="mini-board" hgap="2" vgap="2" GridPane.columnIndex="0"
+                                              GridPane.rowIndex="2">
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                    </GridPane>
+
+                                    <GridPane styleClass="mini-board" hgap="2" vgap="2" GridPane.columnIndex="1"
+                                              GridPane.rowIndex="2">
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                    </GridPane>
+
+                                    <GridPane styleClass="mini-board" hgap="2" vgap="2" GridPane.columnIndex="2"
+                                              GridPane.rowIndex="2">
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                        <Rectangle width="20" height="20" styleClass="mini-cell"
+                                                   GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                    </GridPane>
+                                </GridPane>
+                                <Label wrapText="true" text="Ultimate Tic-Tac-Toe: Each move determines where opponent must play"
+                                       styleClass="board-caption"/>
+                            </VBox>
+                        </HBox>
+
+                        <Label wrapText="true" text="Misère Tic-Tac-Toe" styleClass="subsection-header">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+
+                        <Label wrapText="true" text="The player who gets three in a row loses instead of wins."
+                               styleClass="rule-text"/>
+
+                        <Label wrapText="true" text="Numerical Tic-Tac-Toe" styleClass="subsection-header">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="Players use numbers instead of X and O. One player uses odd numbers, the other uses even numbers. The sum of three numbers in a row must equal 15 to win."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <HBox alignment="CENTER">
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Numerical Tic-Tac-Toe" styleClass="scenario-title"/>
+                                <GridPane styleClass="tictactoe-board" alignment="CENTER" hgap="5" vgap="5">
+                                    <Rectangle width="60" height="60" styleClass="board-cell, win-cell"
+                                               GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, win-cell"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="60" height="60" styleClass="board-cell, win-cell"
+                                               GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+
+                                    <Label wrapText="true" text="2" styleClass="number-symbol, win-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="7" styleClass="number-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="6" styleClass="number-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="0"/>
+                                    <Label wrapText="true" text="9" styleClass="number-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="5" styleClass="number-symbol, win-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="1" styleClass="number-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="1"/>
+                                    <Label wrapText="true" text="4" styleClass="number-symbol" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="2"/>
+                                    <Label wrapText="true" text="3" styleClass="number-symbol" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="2"/>
+                                    <Label wrapText="true" text="8" styleClass="number-symbol, win-symbol" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="2"/>
+                                </GridPane>
+                                <Label wrapText="true" text="2 + 5 + 8 = 15 (winning diagonal)" styleClass="board-caption"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <Tab text="History" styleClass="rule-tab">
+                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                    <VBox spacing="15" styleClass="rules-section">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label wrapText="true" text="Game History" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="Tic-Tac-Toe, also known as Noughts and Crosses or Xs and Os, has ancient origins dating back to ancient Egypt around 1300 BCE. Various versions of the game have been played throughout history across different cultures."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <Label text="The modern grid version became popular in the 19th century. In the digital age, Tic-Tac-Toe became one of the earliest computer games, with a version created by A.S. Douglas in 1952 at the University of Cambridge."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <Label text="Despite its simple rules, Tic-Tac-Toe has been studied extensively in game theory and artificial intelligence, making it an important game in computing history."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <HBox alignment="CENTER">
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Historical Timeline" styleClass="scenario-title"/>
+                                <VBox styleClass="timeline-box" spacing="15">
+                                    <HBox spacing="10">
+                                        <Label wrapText="true" text="1300 BCE" styleClass="timeline-date"/>
+                                        <Label text="Evidence of early variations in Ancient Egypt" wrapText="true"
+                                               styleClass="timeline-event"/>
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <Label wrapText="true" text="1st Century BCE" styleClass="timeline-date"/>
+                                        <Label text="Roman Empire games similar to Tic-Tac-Toe" wrapText="true"
+                                               styleClass="timeline-event"/>
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <Label wrapText="true" text="19th Century" styleClass="timeline-date"/>
+                                        <Label text="Modern 3×3 grid version becomes popular" wrapText="true"
+                                               styleClass="timeline-event"/>
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <Label wrapText="true" text="1952" styleClass="timeline-date"/>
+                                        <Label text="First computer version by A.S. Douglas" wrapText="true"
+                                               styleClass="timeline-event"/>
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <Label wrapText="true" text="1960s" styleClass="timeline-date"/>
+                                        <Label text="Used to demonstrate early artificial intelligence algorithms"
+                                               wrapText="true" styleClass="timeline-event"/>
+                                    </HBox>
+                                </VBox>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+        </TabPane>
+    </VBox>
+</AnchorPane>

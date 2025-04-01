@@ -45,16 +45,30 @@ public class CheckersGame {
             return board[toRow][toCol] == null;
         }
 
-        // Add jump move logic here
+        if (Math.abs(rowDiff) == 2 && Math.abs(colDiff) == 2) {
+            int midRow = (piece.getRow() + toRow) / 2;
+            int midCol = (piece.getCol() + toCol) / 2;
+            Piece midPiece = board[midRow][midCol];
+            return midPiece != null && midPiece.getColor() != piece.getColor() && board[toRow][toCol] == null;
+        }
+
         return false;
     }
 
     public void makeMove(Piece piece, int toRow, int toCol) {
+        int rowDiff = toRow - piece.getRow();
+        int colDiff = toCol - piece.getCol();
+
+        if (Math.abs(rowDiff) == 2 && Math.abs(colDiff) == 2) {
+            int midRow = (piece.getRow() + toRow) / 2;
+            int midCol = (piece.getCol() + toCol) / 2;
+            board[midRow][midCol] = null;
+        }
+
         board[piece.getRow()][piece.getCol()] = null;
         piece.setPosition(toRow, toCol);
         board[toRow][toCol] = piece;
 
-        // Check for promotion
         if ((piece.getColor() == Piece.PieceColor.RED && toRow == BOARD_SIZE - 1) ||
                 (piece.getColor() == Piece.PieceColor.BLACK && toRow == 0)) {
             piece.promoteToKing();

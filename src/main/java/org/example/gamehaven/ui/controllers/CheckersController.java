@@ -2,20 +2,17 @@ package org.example.gamehaven.ui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Lighting;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.RadialGradient;
-import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import org.example.gamehaven.core.SceneManager;
@@ -24,14 +21,16 @@ import org.example.gamehaven.games.checkers.Piece;
 import org.example.gamehaven.multiplayer.GameServer;
 import org.example.gamehaven.core.GameMode;
 
+import java.util.Objects;
+
 public class CheckersController {
     public Button restartButton;
     public Button quitButton;
     @FXML private GridPane gameBoard;
     @FXML private Label statusLabel;
     @FXML private Label playerLabel;
-    @FXML private Circle selectedPieceImage;
-    @FXML private Circle currentPlayerImage;
+    @FXML private ImageView selectedPieceImage;
+    @FXML private ImageView currentPlayerImage;
 
     private CheckersGame game;
     private GameServer gameServer;
@@ -40,6 +39,11 @@ public class CheckersController {
 
     @FXML
     public void initialize() {
+        Image redPieceImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/org/example/gamehaven/images/avatars/default_male.png")));
+        Image blackPieceImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/org/example/gamehaven/images/avatars/default_female.png")));
+
+        selectedPieceImage.setImage(blackPieceImage);
+        currentPlayerImage.setImage(redPieceImage);
         isMultiplayer = LobbyController.selectedGameMode == GameMode.MULTIPLAYER;
         game = new CheckersGame();
 
@@ -52,7 +56,7 @@ public class CheckersController {
         }
 
         initializeBoard();
-//        updateCurrentPlayer();
+        updateCurrentPlayer();
     }
 
     private void initializeBoard() {
@@ -116,7 +120,7 @@ public class CheckersController {
             }
 
             selectedPiece = null;
-            selectedPieceImage.setFill(Color.TRANSPARENT);
+//            selectedPieceImage.setFill(Color.TRANSPARENT);
             updateCurrentPlayer();
         }
     }
@@ -128,8 +132,7 @@ public class CheckersController {
         if (clickedPiece.getColor() == game.getCurrentPlayer()) {
             // Clear previous selection effect
             gameBoard.getChildren().forEach(node -> {
-                if (node.getEffect() instanceof DropShadow) {
-                    DropShadow effect = (DropShadow) node.getEffect();
+                if (node.getEffect() instanceof DropShadow effect) {
                     if (effect.getColor() == Color.YELLOW) {
                         // Reset to normal shadow
                         node.setEffect(new DropShadow(10, Color.rgb(0, 0, 0, 0.7)));
@@ -141,8 +144,12 @@ public class CheckersController {
             selectedPiece = clickedPiece;
             source.setEffect(new DropShadow(15, Color.YELLOW));
 
-            // Update selected piece indicator
-            selectedPieceImage.setFill(selectedPiece.getColor().getFxColor());
+            Image pieceImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream(
+                    clickedPiece.getColor() == Piece.PieceColor.RED ?
+                            "/org/example/gamehaven/images/avatars/default_male.png" :
+                            "/org/example/gamehaven/images/avatars/default_female.png" // or different image
+            )));
+            selectedPieceImage.setImage(pieceImage);
         }
     }
 
@@ -165,7 +172,13 @@ public class CheckersController {
     private void updateCurrentPlayer() {
         String player = game.getCurrentPlayer() == Piece.PieceColor.RED ? "Red" : "Black";
         statusLabel.setText("Current turn: " + player);  // fixed: Removed STR. template
-//        currentPlayerImage.setFill(game.getCurrentPlayer().getFxColor());
+
+        Image playerImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream(
+                game.getCurrentPlayer() == Piece.PieceColor.RED ?
+                        "/org/example/gamehaven/images/avatars/default_male.png" :
+                        "/org/example/gamehaven/images/avatars/default_female.png" // or different image
+        )));
+        currentPlayerImage.setImage(playerImage);
     }
 
     private void setupMultiplayer() {

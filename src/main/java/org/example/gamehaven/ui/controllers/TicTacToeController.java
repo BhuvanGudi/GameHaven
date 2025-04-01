@@ -1,6 +1,7 @@
 package org.example.gamehaven.ui.controllers;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -17,6 +18,7 @@ public class TicTacToeController {
     public Button restartButton;
     public Button quitButton;
     private static final Logger logger = LoggerFactory.getLogger(TicTacToeController.class);
+    public Button rulesButton;
     @FXML private GridPane gameBoard;
     @FXML private Label statusLabel;
     @FXML private Label playerLabel;
@@ -150,4 +152,6 @@ public class TicTacToeController {
     private void handleBackToLobby() {
         SceneManager.loadScene("lobby/main.fxml");
     }
+
+    public void handleRules(ActionEvent actionEvent) {SceneManager.showRulesDialog("rules/tictactoe_rules.fxml");}
 }
