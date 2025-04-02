@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.Circle?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.gamehaven.games.connect4.ConnectFourRules"
+            prefHeight="600.0" prefWidth="800.0"
+            stylesheets="@../../styles/connectfour_rules.css">
+
+    <VBox alignment="CENTER" spacing="10" AnchorPane.topAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0">
+
+        <Label wrapText="true" text="Connect Four Rules" styleClass="title-label">
+            <font>
+                <Font name="System Bold" size="28.0"/>
+            </font>
+            <VBox.margin>
+                <Insets top="20.0" bottom="10.0"/>
+            </VBox.margin>
+        </Label>
+
+        <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" styleClass="rules-tab-pane">
+            <Tab text="Basic Rules" styleClass="rule-tab">
+                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                    <VBox spacing="20" styleClass="rules-section">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label wrapText="true" text="Game Objective" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="The objective of Connect Four is to be the first player to form a horizontal, vertical, or diagonal line of four of your colored discs."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <Label wrapText="true" text="Game Board" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <HBox alignment="CENTER" styleClass="board-container">
+                            <GridPane styleClass="connectfour-board" alignment="CENTER" hgap="5" vgap="5">
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="0"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="0"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="0"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                           GridPane.rowIndex="0"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                           GridPane.rowIndex="0"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                           GridPane.rowIndex="0"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                           GridPane.rowIndex="0"/>
+
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="1"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="1"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="1"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                           GridPane.rowIndex="1"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                           GridPane.rowIndex="1"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                           GridPane.rowIndex="1"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                           GridPane.rowIndex="1"/>
+
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="2"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="2"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="2"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                           GridPane.rowIndex="2"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                           GridPane.rowIndex="2"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                           GridPane.rowIndex="2"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                           GridPane.rowIndex="2"/>
+
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="3"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="3"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="3"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                           GridPane.rowIndex="3"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                           GridPane.rowIndex="3"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                           GridPane.rowIndex="3"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                           GridPane.rowIndex="3"/>
+
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="4"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="4"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="4"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                           GridPane.rowIndex="4"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                           GridPane.rowIndex="4"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                           GridPane.rowIndex="4"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                           GridPane.rowIndex="4"/>
+
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="5"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="5"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                           GridPane.rowIndex="5"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                           GridPane.rowIndex="5"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                           GridPane.rowIndex="5"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                           GridPane.rowIndex="5"/>
+                                <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                           GridPane.rowIndex="5"/>
+                            </GridPane>
+                            <Label text="A standard 7×6 Connect Four board." wrapText="true" styleClass="board-caption"/>
+                        </HBox>
+
+                        <Label wrapText="true" text="Game Setup" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="• The game is played on a 7×6 vertical grid.&#10;• Two players take turns: one plays as red, the other as yellow.&#10;• Red traditionally goes first."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <Label wrapText="true" text="How to Play" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="1. Players take turns dropping their colored discs into any of the seven columns.&#10;2. The disc falls to the lowest available space in the selected column.&#10;3. The first player to connect four of their discs in a row wins.&#10;4. If all spaces are filled without a winner, the game is a draw."
+                               wrapText="true" styleClass="rule-text"/>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <Tab text="Game Scenarios" styleClass="rule-tab">
+                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                    <VBox spacing="25" styleClass="rules-section">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label wrapText="true" text="Winning Scenarios" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="To win at Connect Four, a player must place four of their discs in a horizontal, vertical, or diagonal row."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <HBox spacing="40" alignment="CENTER">
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Horizontal Win" styleClass="scenario-title"/>
+                                <GridPane styleClass="connectfour-board" alignment="CENTER" hgap="5" vgap="5">
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="0"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="1"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="2"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, win-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, win-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, win-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, win-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="3"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="4"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="5"/>
+
+                                    <Circle radius="20" styleClass="red-piece" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                    <Circle radius="20" styleClass="red-piece" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                                    <Circle radius="20" styleClass="red-piece" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+                                    <Circle radius="20" styleClass="red-piece" GridPane.columnIndex="4" GridPane.rowIndex="3"/>
+                                </GridPane>
+                            </VBox>
+
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Vertical Win" styleClass="scenario-title"/>
+                                <GridPane styleClass="connectfour-board" alignment="CENTER" hgap="5" vgap="5">
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="0"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, win-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="1"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, win-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="2"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, win-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="3"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, win-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="4"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="5"/>
+
+                                    <Circle radius="20" styleClass="yellow-piece" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                                    <Circle radius="20" styleClass="yellow-piece" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                                    <Circle radius="20" styleClass="yellow-piece" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+                                    <Circle radius="20" styleClass="yellow-piece" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+                                </GridPane>
+                            </VBox>
+
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Diagonal Win" styleClass="scenario-title"/>
+                                <GridPane styleClass="connectfour-board" alignment="CENTER" hgap="5" vgap="5">
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="0"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="1"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, win-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="2"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, win-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="3"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, win-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="4"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, win-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="5"/>
+
+                                    <Circle radius="20" styleClass="red-piece" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                    <Circle radius="20" styleClass="red-piece" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+                                    <Circle radius="20" styleClass="red-piece" GridPane.columnIndex="4" GridPane.rowIndex="4"/>
+                                    <Circle radius="20" styleClass="red-piece" GridPane.columnIndex="5" GridPane.rowIndex="5"/>
+                                </GridPane>
+                            </VBox>
+                        </HBox>
+
+                        <Label wrapText="true" text="Draw Scenario" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="A draw occurs when all 42 spaces on the board are filled without either player achieving four in a row."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <HBox alignment="CENTER" styleClass="scenario-box">
+                            <VBox alignment="CENTER">
+                                <Label wrapText="true" text="Draw/Tie" styleClass="scenario-title"/>
+                                <GridPane styleClass="connectfour-board" alignment="CENTER" hgap="5" vgap="5">
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="0"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="1"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="2"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="3"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="4"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="4"/>
+
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="4"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="5"
+                                               GridPane.rowIndex="5"/>
+                                    <Rectangle width="50" height="50" styleClass="board-cell, draw-cell" GridPane.columnIndex="6"
+                                               GridPane.rowIndex="5"/>
+                                </GridPane>
+                            </VBox>
+                        </HBox>
+
+                        <TabPane>
+                            <Tab text="Strategy" styleClass="rule-tab">
+                                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                                    <VBox spacing="15" styleClass="rules-section">
+                                        <padding>
+                                            <Insets top="20" right="20" bottom="20" left="20"/>
+                                        </padding>
+                                        <Label wrapText="true" text="Basic Strategy" styleClass="section-header">
+                                            <font>
+                                                <Font name="System Bold" size="18.0"/>
+                                            </font>
+                                        </Label>
+
+                                        <Label text="• Center Control: The center column offers the most win opportunities.&#10;• Block Opponent: Always block your opponent when they have three in a row.&#10;• Build Multiple Threats: Create situations where you have two potential winning lines.&#10;• Force Moves: Plan sequences that force your opponent to respond to your threats."
+                                               wrapText="true" styleClass="rule-text"/>
+
+                                        <HBox alignment="CENTER" spacing="40">
+                                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                                <Label wrapText="true" text="Center Control" styleClass="scenario-title"/>
+                                                <GridPane styleClass="connectfour-board" alignment="CENTER" hgap="5" vgap="5">
+                                                    <!-- Board cells omitted for brevity (same 7x6 grid as before) -->
+                                                    <Circle radius="20" styleClass="red-piece" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+                                                </GridPane>
+                                                <Label wrapText="true" text="Starting in the center gives maximum options" styleClass="board-caption"/>
+                                            </VBox>
+
+                                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                                <Label wrapText="true" text="Double Threat" styleClass="scenario-title"/>
+                                                <GridPane styleClass="connectfour-board" alignment="CENTER" hgap="5" vgap="5">
+                                                    <!-- Board cells omitted for brevity (same 7x6 grid as before) -->
+                                                    <Circle radius="20" styleClass="red-piece" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+                                                    <Circle radius="20" styleClass="red-piece" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+                                                    <Circle radius="20" styleClass="red-piece" GridPane.columnIndex="4" GridPane.rowIndex="5"/>
+                                                    <Circle radius="20" styleClass="yellow-piece" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+                                                </GridPane>
+                                                <Label wrapText="true" text="Creating two potential winning moves" styleClass="board-caption"/>
+                                            </VBox>
+                                        </HBox>
+
+                                        <Label wrapText="true" text="Advanced Tips" styleClass="section-header">
+                                            <font>
+                                                <Font name="System Bold" size="18.0"/>
+                                            </font>
+                                        </Label>
+
+                                        <Label text="• First Move Advantage: The first player can force a win with perfect play.&#10;• Odd/Even Strategy: Control whether the total number of pieces is odd or even.&#10;• Edge Play: Be cautious with edge columns as they offer fewer win possibilities.&#10;• Pattern Recognition: Learn common winning patterns and traps."
+                                               wrapText="true" styleClass="rule-text"/>
+                                    </VBox>
+                                </ScrollPane>
+                            </Tab>
+                        </TabPane>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <Tab text="Variants" styleClass="rule-tab">
+                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                    <VBox spacing="15" styleClass="rules-section">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label wrapText="true" text="Game Variations" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label wrapText="true" text="PopOut Connect Four" styleClass="subsection-header">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+
+                        <Label wrapText="true" text="Players can choose to pop out a piece from the bottom of a column instead of dropping a new piece."
+                               styleClass="rule-text"/>
+
+                        <Label wrapText="true" text="Five-in-a-Row" styleClass="subsection-header">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="Played on a larger board where the goal is to connect five pieces instead of four."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <HBox alignment="CENTER">
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Five-in-a-Row" styleClass="scenario-title"/>
+                                <GridPane styleClass="connectfour-board" alignment="CENTER" hgap="5" vgap="5">
+                                    <!-- Larger board representation -->
+                                </GridPane>
+                                <Label wrapText="true" text="Extended version requiring five connections" styleClass="board-caption"/>
+                            </VBox>
+                        </HBox>
+
+                        <Label wrapText="true" text="Gravity Connect Four" styleClass="subsection-header">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+
+                        <Label wrapText="true" text="Pieces can be placed in any empty space, not just at the bottom, and fall to fill gaps below."
+                               styleClass="rule-text"/>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <Tab text="History" styleClass="rule-tab">
+                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                    <VBox spacing="15" styleClass="rules-section">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label wrapText="true" text="Game History" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="Connect Four was first sold under the famous Connect Four trademark by Milton Bradley in February 1974. The game was independently developed by several people in the early 1970s."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <Label text="The game was solved mathematically by James Dow Allen and Victor Allis in 1988, showing that with perfect play from both players, the first player can force a win."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <HBox alignment="CENTER">
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Historical Timeline" styleClass="scenario-title"/>
+                                <VBox styleClass="timeline-box" spacing="15">
+                                    <HBox spacing="10">
+                                        <Label wrapText="true" text="1974" styleClass="timeline-date"/>
+                                        <Label text="First commercially sold by Milton Bradley" wrapText="true"
+                                               styleClass="timeline-event"/>
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <Label wrapText="true" text="1988" styleClass="timeline-date"/>
+                                        <Label text="Mathematically solved by James Dow Allen and Victor Allis" wrapText="true"
+                                               styleClass="timeline-event"/>
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <Label wrapText="true" text="2015" styleClass="timeline-date"/>
+                                        <Label text="Added to World Video Game Hall of Fame" wrapText="true"
+                                               styleClass="timeline-event"/>
+                                    </HBox>
+                                </VBox>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+        </TabPane>
+    </VBox>
+</AnchorPane>

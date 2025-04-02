@@ -12,7 +12,7 @@
 
     <VBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
           styleClass="connect-four-background">
-        <!-- Game Header -->
+
         <HBox styleClass="game-header" alignment="CENTER" spacing="30">
             <padding>
                 <Insets top="15" right="15" bottom="15" left="15" />
@@ -22,9 +22,9 @@
             <Label fx:id="playerLabel" styleClass="player-label" text="Player 1 vs Player 2" prefWidth="200"/>
         </HBox>
 
-        <!-- Game Content -->
+
         <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
-            <!-- Column Selectors -->
+
             <HBox alignment="CENTER" spacing="8" styleClass="connect-four-top">
                 <padding>
                     <Insets top="10" right="15" bottom="10" left="15" />
@@ -36,7 +36,6 @@
                 <Button fx:id="col4" styleClass="wood-drop-button" onAction="#handleColumn4" minWidth="60" prefWidth="60" maxWidth="60" text="↓"/>
                 <Button fx:id="col5" styleClass="wood-drop-button" onAction="#handleColumn5" minWidth="60" prefWidth="60" maxWidth="60" text="↓"/>
                 <Button fx:id="col6" styleClass="wood-drop-button" onAction="#handleColumn6" minWidth="60" prefWidth="60" maxWidth="60" text="↓"/>
-                <Button fx:id="col7" styleClass="wood-drop-button" onAction="#handleColumn7" minWidth="60" prefWidth="60" maxWidth="60" text="↓"/>
             </HBox>
 
             <!-- Game Board -->
@@ -57,11 +56,8 @@
                         <ColumnConstraints hgrow="NEVER" minWidth="60" prefWidth="60" maxWidth="60"/>
                         <ColumnConstraints hgrow="NEVER" minWidth="60" prefWidth="60" maxWidth="60"/>
                         <ColumnConstraints hgrow="NEVER" minWidth="60" prefWidth="60" maxWidth="60"/>
-                        <ColumnConstraints hgrow="NEVER" minWidth="60" prefWidth="60" maxWidth="60"/>
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints vgrow="NEVER" minHeight="60" prefHeight="60" maxHeight="60"/>
-                        <RowConstraints vgrow="NEVER" minHeight="60" prefHeight="60" maxHeight="60"/>
                         <RowConstraints vgrow="NEVER" minHeight="60" prefHeight="60" maxHeight="60"/>
                         <RowConstraints vgrow="NEVER" minHeight="60" prefHeight="60" maxHeight="60"/>
                         <RowConstraints vgrow="NEVER" minHeight="60" prefHeight="60" maxHeight="60"/>
@@ -78,6 +74,7 @@
                 </padding>
                 <Button fx:id="restartButton" text="Restart Game" styleClass="wood-button" onAction="#handleRestart"/>
                 <Button fx:id="quitButton" text="Quit Game" styleClass="wood-button" onAction="#handleQuit"/>
+                <Button fx:id="rulesButton" text="Rules" styleClass="game-button" onAction="#handleRules"/>
             </HBox>
         </VBox>
     </VBox>

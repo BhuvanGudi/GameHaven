@@ -1,12 +1,12 @@
 package org.example.gamehaven.games.connect4;
 
 public class ConnectFourGame {
-    private static final int ROWS = 8;
-    private static final int COLS = 8;
-    private char[][] board;
+    private static final int ROWS = 6;
+    private static final int COLS = 7;
+    private final char[][] board;
     private char currentPlayer;
     private boolean gameOver;
-    private int[] lastMove;
+    private final int[] lastMove;
 
     public ConnectFourGame() {
         board = new char[ROWS][COLS];
@@ -28,9 +28,9 @@ public class ConnectFourGame {
         return gameOver || checkWin() || isBoardFull();
     }
 
-    public int makeMove(int col) {
+    public void makeMove(int col) {
         if (gameOver || col < 0 || col >= COLS || board[0][col] != ' ') {
-            return -1;
+            return;
         }
 
         int row = ROWS - 1;
@@ -49,9 +49,7 @@ public class ConnectFourGame {
             } else {
                 currentPlayer = (currentPlayer == 'R') ? 'Y' : 'R';
             }
-            return row;
         }
-        return -1;
     }
 
     public char getCurrentPlayer() {
@@ -60,15 +58,10 @@ public class ConnectFourGame {
 
     public boolean checkWin() {
         if (lastMove[0] == -1) return false;
-
-        int row = lastMove[0];
-        int col = lastMove[1];
+        int row = lastMove[0], col = lastMove[1];
         char player = board[row][col];
-
-        return checkDirection(row, col, 1, 0, player) ||
-                checkDirection(row, col, 0, 1, player) ||
-                checkDirection(row, col, 1, 1, player) ||
-                checkDirection(row, col, 1, -1, player);
+        return checkDirection(row, col, 1, 0, player) || checkDirection(row, col, 0, 1, player) ||
+                checkDirection(row, col, 1, 1, player) || checkDirection(row, col, 1, -1, player);
     }
 
     private boolean checkDirection(int row, int col, int dRow, int dCol, char player) {
@@ -80,9 +73,7 @@ public class ConnectFourGame {
 
     private int countInDirection(int row, int col, int dRow, int dCol, char player) {
         int count = 0;
-        int r = row + dRow;
-        int c = col + dCol;
-
+        int r = row + dRow, c = col + dCol;
         while (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] == player) {
             count++;
             r += dRow;
@@ -93,14 +84,16 @@ public class ConnectFourGame {
 
     public boolean isBoardFull() {
         for (int j = 0; j < COLS; j++) {
-            if (board[0][j] == ' ') {
-                return false;
-            }
+            if (board[0][j] == ' ') return false;
         }
         return true;
     }
 
     public char[][] getBoard() {
         return board;
+    }
+
+    public void setCurrentPlayer(char player) {
+        currentPlayer = player;
     }
 }

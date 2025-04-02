@@ -1,10 +1,9 @@
-// ConnectFourMove.java
 package org.example.gamehaven.games.connect4;
 
 public class ConnectFourMove {
-    private int row;
-    private int col;
-    private char player;
+    private final int row;
+    private final int col;
+    private final char player;
 
     public ConnectFourMove(int row, int col, char player) {
         this.row = row;
