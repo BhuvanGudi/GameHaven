@@ -65,11 +65,15 @@ public class AuthService {
         CompletableFuture<User> future = new CompletableFuture<>();
         try {
             UserRecord userRecord = auth.getUserByEmail(email);
+
             databaseRef.child("users").child(userRecord.getUid())
                     .addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             User user = dataSnapshot.getValue(User.class);
+                            if (user == null) {
+                                user = new User(userRecord.getUid(), email.split("@")[0]);
+                            }
                             UserSession.setCurrentUser(user);
                             future.complete(user);
                         }
