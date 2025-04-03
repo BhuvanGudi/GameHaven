@@ -8,7 +8,7 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.gamehaven.ui.controllers.SettingsController"
             stylesheets="@../../styles/main.css"
-            prefHeight="900.0" prefWidth="1400.0">
+            prefHeight="780.0" prefWidth="1400.0">
 
     <VBox alignment="CENTER" spacing="30" AnchorPane.topAnchor="20" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
         <Text text="Settings" styleClass="profile-title"/>

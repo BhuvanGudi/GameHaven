@@ -8,8 +8,9 @@ import org.example.gamehaven.auth.UserSession;
 import org.example.gamehaven.core.SceneManager;
 import org.example.gamehaven.auth.User;
 import org.example.gamehaven.auth.AuthService;
-
+ 
 public class ProfileController {
+    public TabPane gameStatsTabPane;
     @FXML private Label usernameLabel;
     @FXML private Label gamesPlayedLabel;
     @FXML private Label winsLabel;
@@ -36,6 +37,18 @@ public class ProfileController {
         User currentUser = UserSession.getCurrentUser();
         if (currentUser != null) {
             loadUserData(currentUser);
+        }
+        updateTabWidths();
+        gameStatsTabPane.widthProperty().addListener((obs, oldVal, newVal) -> {
+            updateTabWidths();
+        });
+    }
+
+    private void updateTabWidths() {
+        double tabWidth = gameStatsTabPane.getWidth() / gameStatsTabPane.getTabs().size();
+        for (Tab tab : gameStatsTabPane.getTabs()) {
+            double finalWidth = Math.max(tabWidth, 100);
+            tab.setStyle("-fx-pref-width: " + finalWidth + "px;");
         }
     }
 

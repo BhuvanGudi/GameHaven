@@ -11,6 +11,7 @@ import org.example.gamehaven.games.tictactoe.TicTacToeGame;
 import org.example.gamehaven.games.tictactoe.TicTacToeAI;
 import org.example.gamehaven.multiplayer.GameServer;
 import org.example.gamehaven.core.GameMode;
+import org.example.gamehaven.utils.SoundManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -146,11 +147,15 @@ public class TicTacToeController {
     @FXML
     private void handleQuit() {
         SceneManager.loadScene("lobby/main.fxml");
+        SoundManager soundManager = SoundManager.getInstance();
+        soundManager.setVolume(0.7);
     }
 
     @FXML
     private void handleBackToLobby() {
         SceneManager.loadScene("lobby/main.fxml");
+        SoundManager soundManager = SoundManager.getInstance();
+        soundManager.setVolume(0.7);
     }
 
     public void handleRules(ActionEvent actionEvent) {SceneManager.showRulesDialog("rules/tictactoe_rules.fxml");}

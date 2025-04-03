@@ -10,6 +10,7 @@ import javafx.scene.shape.Circle;
 import org.example.gamehaven.core.SceneManager;
 import org.example.gamehaven.games.connect4.ConnectFourGame;
 import org.example.gamehaven.games.connect4.ConnectFourAI;
+import org.example.gamehaven.utils.SoundManager;
 
 public class ConnectFourController {
     public Button rulesButton;
@@ -118,11 +119,15 @@ public class ConnectFourController {
     @FXML
     private void handleQuit() {
         SceneManager.loadScene("lobby/main.fxml");
+        SoundManager soundManager = SoundManager.getInstance();
+        soundManager.setVolume(0.7);
     }
 
     @FXML
     private void handleBackToLobby() {
         SceneManager.loadScene("lobby/main.fxml");
+        SoundManager soundManager = SoundManager.getInstance();
+        soundManager.setVolume(0.7);
     }
 
     public void handleRules(ActionEvent actionEvent) {

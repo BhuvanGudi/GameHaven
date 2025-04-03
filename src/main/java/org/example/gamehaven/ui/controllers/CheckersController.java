@@ -23,6 +23,7 @@ import org.example.gamehaven.games.checkers.CheckersGame;
 import org.example.gamehaven.games.checkers.Piece;
 import org.example.gamehaven.multiplayer.GameServer;
 import org.example.gamehaven.core.GameMode;
+import org.example.gamehaven.utils.SoundManager;
 
 import java.util.Objects;
 
@@ -203,10 +204,14 @@ public class CheckersController {
 
     @FXML private void handleQuit() {
         SceneManager.loadScene("lobby/main.fxml");
+        SoundManager soundManager = SoundManager.getInstance();
+        soundManager.setVolume(0.7);
     }
 
     @FXML private void handleBackToLobby() {
         SceneManager.loadScene("lobby/main.fxml");
+        SoundManager soundManager = SoundManager.getInstance();
+        soundManager.setVolume(0.7);
     }
 
     public void handleRules(ActionEvent actionEvent) {
