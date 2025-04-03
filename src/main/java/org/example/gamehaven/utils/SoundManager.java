@@ -53,15 +53,15 @@ public class SoundManager {
     }
 
     public void playWinSound() {
-        playSoundEffect("/sounds/win.mp3");
+        playSoundEffect("/org/example/gamehaven/sounds/win.wav");
     }
 
     public void playLoseSound() {
-        playSoundEffect("/sounds/lose.mp3");
+        playSoundEffect("/org/example/gamehaven/sounds/lose.wav");
     }
 
     public void playDrawSound() {
-        playSoundEffect("/sounds/draw.mp3");
+        playSoundEffect("/org/example/gamehaven/sounds/draw.mp3");
     }
 
     private void playSoundEffect(String soundFile) {

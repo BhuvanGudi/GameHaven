@@ -65,6 +65,18 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- Firebase Authentication -->
+        <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-auth</artifactId>
+            <version>21.0.3</version>
+        </dependency>
+        <!-- Firebase Realtime Database -->
+        <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-database</artifactId>
+            <version>20.0.0</version>
+        </dependency>
         <!-- SLF4J API -->
         <dependency>
             <groupId>org.slf4j</groupId>

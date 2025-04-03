@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import org.example.gamehaven.auth.User;
+import org.example.gamehaven.auth.UserSession;
 import org.example.gamehaven.core.SceneManager;
 import org.example.gamehaven.games.connect4.ConnectFourGame;
 import org.example.gamehaven.games.connect4.ConnectFourAI;
@@ -65,9 +67,17 @@ public class ConnectFourController {
         }
 
         if (game.checkWin()) {
-            statusLabel.setText("Player " + (game.getCurrentPlayer() == 'R' ? "Yellow" : "Red") + " wins!");
+            statusLabel.setText("Player " + (game.getCurrentPlayer() == 'R' ? "Red" : "Yellow") + " wins!");
+            User currentUser = UserSession.getCurrentUser();
+            currentUser.incrementWins();
+            currentUser.incrementC4Wins();
+            SoundManager.getInstance().playWinSound();
         } else if (game.isBoardFull()) {
             statusLabel.setText("Game ended in a draw!");
+            User currentUser = UserSession.getCurrentUser();
+            currentUser.incrementWins();
+            currentUser.incrementC4Draws();
+            SoundManager.getInstance().playWinSound();
         } else {
             statusLabel.setText("Your turn: " + (game.getCurrentPlayer() == 'R' ? "Red" : "Yellow"));
             playerLabel.setText(vsAI ? "Player vs AI" : "Player 1 vs Player 2");

@@ -4,6 +4,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.example.gamehaven.auth.AuthService;
+import org.example.gamehaven.auth.User;
+import org.example.gamehaven.auth.UserSession;
 import org.example.gamehaven.core.SceneManager;
 
 public class AuthController {
@@ -26,15 +28,24 @@ public class AuthController {
         }
 
         authService.login(email, password, new AuthService.AuthCallback() {
-            @Override
-            public void onSuccess() {
-                Platform.runLater(() -> SceneManager.loadScene("lobby/main.fxml"));
-            }
-            @Override
-            public void onError(String error) {
-                Platform.runLater(() -> errorLabel.setText("Login failed: " + error));
-            }
-        });
+                    @Override
+                    public void onSuccess(User user) {}
+
+                    @Override
+                    public void onSuccess() {
+                        loginButton.setDisable(true);
+                        errorLabel.setText("Signing in...");
+                        Platform.runLater(() ->
+                                errorLabel.setText("Login successful! Enjoy gaming")
+                        );
+                    }
+                    @Override
+                    public void onError(String error) {
+                        Platform.runLater(() ->
+                                errorLabel.setText("Login error: " + error)
+                        );
+                    }
+                });
     }
 
     @FXML
@@ -48,6 +59,9 @@ public class AuthController {
         }
 
         authService.register(email, password, email.split("@")[0], new AuthService.AuthCallback() {
+            @Override
+            public void onSuccess(User user) {}
+
             @Override
             public void onSuccess() {
                 Platform.runLater(() ->

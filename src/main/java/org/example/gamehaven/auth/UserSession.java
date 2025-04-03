@@ -1,12 +1,14 @@
 package org.example.gamehaven.auth;
 
-import org.example.gamehaven.auth.User;
-
 public class UserSession {
     private static User currentUser;
 
     public static void createSession(String userId, String username) {
         currentUser = new User(userId, username);
+    }
+
+    public static void setCurrentUser(User user) {
+        currentUser = user;
     }
 
     public static User getCurrentUser() {

@@ -1,6 +1,7 @@
 package org.example.gamehaven.ui.controllers;
 
 import com.google.firebase.database.*;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -9,7 +10,7 @@ import org.example.gamehaven.auth.UserSession;
 import org.example.gamehaven.core.SceneManager;
 import org.example.gamehaven.auth.User;
 import org.example.gamehaven.auth.AuthService;
- 
+
 public class ProfileController {
     public TabPane gameStatsTabPane;
     @FXML private Label usernameLabel;
@@ -18,6 +19,7 @@ public class ProfileController {
     @FXML private Label lossesLabel;
     @FXML private Label winRateLabel;
     @FXML private ImageView avatarImage;
+    @FXML private Label errorLabel;
 
     @FXML private Label tttWinsLabel;
     @FXML private Label tttLossesLabel;
@@ -32,6 +34,7 @@ public class ProfileController {
     @FXML private Label checkersDrawsLabel;
 
     private final AuthService authService = new AuthService();
+    private final DatabaseReference database = FirebaseDatabase.getInstance().getReference(); // Added database reference
 
     @FXML
     public void initialize() {
@@ -63,7 +66,6 @@ public class ProfileController {
 
         avatarImage.setImage(new Image(String.valueOf(getClass().getResource("/org/example/gamehaven/images/avatars/default_male.png"))));
 
-        // Game specific stats
         tttWinsLabel.setText("Tic Tac Toe Wins: " + user.getTttWins());
         tttLossesLabel.setText("Tic Tac Toe Losses: " + user.getTttLosses());
         tttDrawsLabel.setText("Tic Tac Toe Draws: " + user.getTttDraws());
@@ -85,24 +87,18 @@ public class ProfileController {
     private void setupRealTimeUpdates() {
         User currentUser = UserSession.getCurrentUser();
         if (currentUser != null) {
-            DatabaseReference userRef = FirebaseDatabase.getInstance()
-                    .getReference("users")
-                    .child(currentUser.getId());
-
-            userRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    User updatedUser = dataSnapshot.getValue(User.class);
-                    if (updatedUser != null) {
-                        loadUserData(updatedUser);
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    System.err.println("Failed to read user data: " + databaseError.getMessage());
-                }
-            });
+            database.child("users").child(currentUser.getId())
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot snapshot) {
+                            User updatedUser = snapshot.getValue(User.class);
+                            Platform.runLater(() -> loadUserData(updatedUser));
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            Platform.runLater(() -> errorLabel.setText("Database error: " + error.getMessage()));
+                        }
+                    });
         }
     }
 
