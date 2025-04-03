@@ -5,6 +5,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.gamehaven.ui.controllers.LeaderboardController"
@@ -14,20 +15,144 @@
     <VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="20" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
         <Text text="Leaderboard" styleClass="profile-title"/>
 
-        <TableView styleClass="profile-stats" style="-fx-background-radius: 10;" AnchorPane.topAnchor="20" AnchorPane.bottomAnchor="80" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
-            <columns>
-                <TableColumn text="Rank" styleClass="profile-stat-header" prefWidth="100"/>
-                <TableColumn text="Player" styleClass="profile-stat-header" prefWidth="300"/>
-                <TableColumn text="Wins" styleClass="profile-stat-header" prefWidth="200"/>
-                <TableColumn text="Win Rate" styleClass="profile-stat-header" prefWidth="200"/>
-            </columns>
-        </TableView>
+        <TabPane fx:id="leaderboardTabPane" styleClass="profile-stats" style="-fx-background-radius: 10;"
+                 prefHeight="600" prefWidth="1200">
+            <!-- Overall Leaderboard Tab -->
+            <Tab text="Overall">
+                <TableView fx:id="overallTable" style="-fx-background-radius: 10;">
+                    <columns>
+                        <TableColumn text="Rank">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="rank"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Player">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="username"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Wins" prefWidth="100">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="wins"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Losses" prefWidth="100">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="losses"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Win Rate" prefWidth="100">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="winRate"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+            </Tab>
 
-        <HBox spacing="20">
-            <ComboBox styleClass="auth-field" promptText="Select Game"/>
-            <Button text="Refresh" styleClass="profile-button"/>
+            <!-- Tic Tac Toe Leaderboard Tab -->
+            <Tab text="Tic Tac Toe">
+                <TableView fx:id="tttTable" style="-fx-background-radius: 10;">
+                    <columns>
+                        <TableColumn text="Player">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="username"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Wins">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="tttWins"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Losses">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="tttLosses"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Draws">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="tttDraws"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Win Rate" prefWidth="100">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="tttWinRate"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+            </Tab>
+
+            <!-- Connect Four Leaderboard Tab -->
+            <Tab text="Connect Four">
+                <TableView fx:id="c4Table" style="-fx-background-radius: 10;">
+                    <columns>
+                        <TableColumn text="Player">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="username"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Wins">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="c4Wins"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Losses">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="c4Losses"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Draws">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="c4Draws"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Win Rate" prefWidth="100">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="c4WinRate"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+            </Tab>
+
+            <!-- Checkers Leaderboard Tab -->
+            <Tab text="Checkers">
+                <TableView fx:id="checkersTable" style="-fx-background-radius: 10;">
+                    <columns>
+                        <TableColumn text="Player">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="username"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Wins">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="checkersWins"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Losses">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="checkersLosses"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Draws">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="checkersDraws"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Win Rate" prefWidth="100">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="checkersWinRate"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+            </Tab>
+        </TabPane>
+
+        <HBox spacing="20" alignment="CENTER">
+            <Button text="Refresh" styleClass="profile-button" onAction="#handleRefresh"/>
+            <Button text="Back" styleClass="profile-button" onAction="#handleBack"/>
         </HBox>
-
-        <Button text="Back" styleClass="profile-button" onAction="#handleBack"/>
     </VBox>
 </AnchorPane>

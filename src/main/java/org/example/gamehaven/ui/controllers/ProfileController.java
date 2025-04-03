@@ -1,5 +1,6 @@
 package org.example.gamehaven.ui.controllers;
 
+import com.google.firebase.database.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -42,6 +43,7 @@ public class ProfileController {
         gameStatsTabPane.widthProperty().addListener((obs, oldVal, newVal) -> {
             updateTabWidths();
         });
+        setupRealTimeUpdates();
     }
 
     private void updateTabWidths() {
@@ -78,6 +80,30 @@ public class ProfileController {
     private double calculateWinRate(User user) {
         if (user.getGamesPlayed() == 0) return 0;
         return Math.round(((double) user.getWins() / user.getGamesPlayed()) * 100);
+    }
+
+    private void setupRealTimeUpdates() {
+        User currentUser = UserSession.getCurrentUser();
+        if (currentUser != null) {
+            DatabaseReference userRef = FirebaseDatabase.getInstance()
+                    .getReference("users")
+                    .child(currentUser.getId());
+
+            userRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    User updatedUser = dataSnapshot.getValue(User.class);
+                    if (updatedUser != null) {
+                        loadUserData(updatedUser);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    System.err.println("Failed to read user data: " + databaseError.getMessage());
+                }
+            });
+        }
     }
 
     @FXML

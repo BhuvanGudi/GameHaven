@@ -51,4 +51,26 @@ public class SoundManager {
     public double getVolume() {
         return volume;
     }
+
+    public void playWinSound() {
+        playSoundEffect("/sounds/win.mp3");
+    }
+
+    public void playLoseSound() {
+        playSoundEffect("/sounds/lose.mp3");
+    }
+
+    public void playDrawSound() {
+        playSoundEffect("/sounds/draw.mp3");
+    }
+
+    private void playSoundEffect(String soundFile) {
+        URL soundUrl = getClass().getResource(soundFile);
+        if (soundUrl != null) {
+            Media sound = new Media(soundUrl.toString());
+            MediaPlayer soundEffectPlayer = new MediaPlayer(sound);
+            soundEffectPlayer.setVolume(volume);
+            soundEffectPlayer.play();
+        }
+    }
 }

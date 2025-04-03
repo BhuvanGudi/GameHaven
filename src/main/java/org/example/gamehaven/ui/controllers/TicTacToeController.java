@@ -1,11 +1,15 @@
 package org.example.gamehaven.ui.controllers;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import org.example.gamehaven.auth.User;
+import org.example.gamehaven.auth.UserSession;
 import org.example.gamehaven.core.SceneManager;
 import org.example.gamehaven.games.tictactoe.TicTacToeGame;
 import org.example.gamehaven.games.tictactoe.TicTacToeAI;
@@ -14,6 +18,9 @@ import org.example.gamehaven.core.GameMode;
 import org.example.gamehaven.utils.SoundManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class TicTacToeController {
     public Button restartButton;
@@ -120,16 +127,70 @@ public class TicTacToeController {
         return null;
     }
 
+    // Modify the updateGameStatus method
     private void updateGameStatus() {
         if (game.checkWin()) {
             statusLabel.setText(game.getCurrentPlayer() + " wins!");
+            User currentUser = UserSession.getCurrentUser();
+            if (currentUser != null) {
+                if (game.getCurrentPlayer() == 'X') { // Assuming X is always the player
+                    currentUser.incrementWins();
+                    currentUser.incrementTttWins();
+                    SoundManager.getInstance().playWinSound();
+                } else {
+                    currentUser.incrementLosses();
+                    currentUser.incrementTttLosses();
+                    SoundManager.getInstance().playLoseSound();
+                }
+                updateFirebaseStats(currentUser);
+            }
         } else if (game.isBoardFull()) {
             statusLabel.setText("It's a draw!");
+            User currentUser = UserSession.getCurrentUser();
+            if (currentUser != null) {
+                currentUser.incrementTttDraws();
+                updateFirebaseStats(currentUser);
+                SoundManager.getInstance().playDrawSound();
+            }
         } else {
             statusLabel.setText("Current turn: " + game.getCurrentPlayer());
             if (!isMultiplayer) {
                 playerLabel.setText(isPlayerTurn ? "Your turn" : "Computer thinking...");
             }
+        }
+    }
+
+    private void updateFirebaseStats(User user) {
+        try {
+            DatabaseReference userRef = FirebaseDatabase.getInstance()
+                    .getReference("users")
+                    .child(user.getId());
+
+            Map<String, Object> updates = new HashMap<>();
+            updates.put("wins", user.getWins());
+            updates.put("losses", user.getLosses());
+            updates.put("gamesPlayed", user.getGamesPlayed());
+            updates.put("tttWins", user.getTttWins());
+            updates.put("tttLosses", user.getTttLosses());
+            updates.put("tttDraws", user.getTttDraws());
+
+            // Modern Firebase syntax with completion listener
+            userRef.updateChildren(updates, (error, ref) -> {
+                if (error != null) {
+                    logger.error("Failed to update user stats: {}", error.getMessage());
+                    Platform.runLater(() -> {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Update Error");
+                        alert.setHeaderText("Failed to save game results");
+                        alert.setContentText("Your stats couldn't be saved to the cloud. Playing offline.");
+                        alert.show();
+                    });
+                } else {
+                    logger.info("User stats updated successfully");
+                }
+            });
+        } catch (Exception e) {
+            logger.error("Unexpected error updating stats: {}", e.getMessage());
         }
     }
 
