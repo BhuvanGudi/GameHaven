@@ -25,8 +25,7 @@ public class SoundManager {
             backgroundPlayer.stop();
         }
 
-        // Load the music file (replace with your actual file path)
-        URL musicFile = getClass().getResource("/sounds/game_music.mp3");
+        URL musicFile = getClass().getResource("/org/example/gamehaven/sounds/gameBackgroundMusic.mp3");
         if (musicFile != null) {
             Media sound = new Media(musicFile.toString());
             backgroundPlayer = new MediaPlayer(sound);

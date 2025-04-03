@@ -467,3 +467,16 @@
     -fx-stroke: #FFD700;
     -fx-stroke-width: 3;
 }
+
+/* Settings Volume */
+.volume-slider {
+    -fx-pref-width: 200px;
+}
+
+.volume-slider .track {
+    -fx-background-color: #4a4a4a;
+}
+
+.volume-slider .thumb {
+    -fx-background-color: #ffffff;
+}

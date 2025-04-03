@@ -3,7 +3,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
@@ -25,6 +24,14 @@
             <Label text="Appearance" styleClass="profile-stat-header"/>
             <CheckBox text="Dark Mode" styleClass="mode-radio" selected="true"/>
             <ComboBox promptText="Theme" styleClass="auth-field"/>
+        </VBox>
+
+        <VBox spacing="15" styleClass="profile-stats" style="-fx-background-radius: 10; -fx-padding: 20;">
+            <Label text="Audio Settings" styleClass="profile-stat-header"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Volume:"/>
+                <Slider fx:id="volumeSlider" value="50" styleClass="volume-slider"/>
+            </HBox>
         </VBox>
 
         <Button text="Back" styleClass="profile-button" onAction="#handleBack"/>
