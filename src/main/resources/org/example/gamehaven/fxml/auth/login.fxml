@@ -4,13 +4,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.geometry.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.gamehaven.ui.controllers.AuthController"
             stylesheets="@../../styles/main.css"
-            prefHeight="700.0" prefWidth="1000.0">
+            prefHeight="800.0" prefWidth="1400.0">
 
     <VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="50" AnchorPane.bottomAnchor="50" AnchorPane.leftAnchor="150" AnchorPane.rightAnchor="150">
         <ImageView fitHeight="100" fitWidth="100">

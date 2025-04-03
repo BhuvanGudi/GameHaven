@@ -10,7 +10,7 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.gamehaven.ui.controllers.ProfileController"
             stylesheets="@../../styles/main.css"
-            prefHeight="700.0" prefWidth="1000.0">
+            prefHeight="800.0" prefWidth="1400.0">
 
     <ScrollPane AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
                 fitToWidth="true" hbarPolicy="NEVER">

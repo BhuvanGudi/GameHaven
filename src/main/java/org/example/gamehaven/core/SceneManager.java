@@ -38,16 +38,13 @@ public class SceneManager {
                     SceneManager.class.getResource("/org/example/gamehaven/fxml/" + fxmlPath)
             ));
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(Objects.requireNonNull(
-                    SceneManager.class.getResource("/org/example/gamehaven/styles/main.css")
-            ).toExternalForm());
 
             Stage rulesStage = new Stage();
-            rulesStage.initModality(Modality.APPLICATION_MODAL); // This makes it modal
-            rulesStage.initOwner(primaryStage); // Set the main window as an owner
+            rulesStage.initModality(Modality.APPLICATION_MODAL);
+            rulesStage.initOwner(primaryStage);
             rulesStage.setScene(scene);
             rulesStage.setTitle("Game Rules");
-            rulesStage.showAndWait(); // showAndWait() blocks interaction with other windows
+            rulesStage.showAndWait();
         } catch (IOException e) {
             System.err.println("Failed to load FXML: " + fxmlPath);
             e.printStackTrace();

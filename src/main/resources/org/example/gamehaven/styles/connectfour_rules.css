@@ -56,6 +56,34 @@
 -fx-background-color: #442e1e;
 }
 
+.rules-tab-pane .tab {
+    -fx-background-color: #5D2906;
+    -fx-background-radius: 10 10 0 0;
+    -fx-border-color: #3D1E06;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10 10 0 0;
+    -fx-cursor: hand;
+}
+
+.rules-tab-pane .tab:selected {
+    -fx-background-color: #8B4513;
+    -fx-border-color: #5D2906;
+    -fx-border-width: 3px;
+    -fx-background-insets: 0;
+}
+
+.rules-tab-pane .tab .tab-label {
+    -fx-text-fill: #F5DEB3;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.rules-tab-pane .tab-header-background {
+    -fx-background-color: #442e1e;
+    -fx-background-radius: 10 10 0 0;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 5, 0, 0, 2);
+}
+
 .section-header {
 -fx-text-fill: #F5DEB3;
 -fx-padding: 5px 0;

@@ -12,6 +12,7 @@ import org.example.gamehaven.games.connect4.ConnectFourGame;
 import org.example.gamehaven.games.connect4.ConnectFourAI;
 
 public class ConnectFourController {
+    public Button rulesButton;
     @FXML private GridPane gameBoard;
     @FXML private Label statusLabel;
     @FXML private Label playerLabel;

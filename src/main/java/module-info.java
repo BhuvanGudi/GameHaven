@@ -10,14 +10,17 @@ module org.example.duplicategame {
     requires com.google.auth;
     requires com.google.auth.oauth2;
     requires google.api.client;
-    requires com.google.gson; // Needed for Firebase JSON serialization
-    requires org.slf4j; // For Firebase logging
+    requires com.google.gson;
+    requires org.slf4j;
 
     // Open packages for FXML and Firebase
     opens org.example.gamehaven.auth to javafx.fxml, firebase.admin, com.google.gson;
     opens org.example.gamehaven.core to javafx.fxml;
     opens org.example.gamehaven.ui.controllers to javafx.fxml, firebase.admin;
     opens org.example.gamehaven.ui.views to javafx.fxml;
+    opens org.example.gamehaven.games.checkers to javafx.fxml;
+    opens org.example.gamehaven.games.tictactoe to javafx.fxml;
+    opens org.example.gamehaven.games.connect4 to javafx.fxml;
 
     // Export public API packages
     exports org.example.gamehaven.auth;
@@ -26,4 +29,5 @@ module org.example.duplicategame {
     exports org.example.gamehaven.ui.views;
     exports org.example.gamehaven.games.tictactoe to javafx.fxml;
     exports org.example.gamehaven.games.connect4 to javafx.fxml;
+    exports org.example.gamehaven.games.checkers to javafx.fxml;
 }

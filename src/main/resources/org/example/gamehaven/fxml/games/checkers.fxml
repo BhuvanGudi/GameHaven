@@ -9,10 +9,10 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.gamehaven.ui.controllers.CheckersController"
             stylesheets="@../../styles/main.css"
-            prefHeight="700.0" prefWidth="1000.0">
+            prefHeight="800.0" prefWidth="1400.0">
 
     <VBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
-        <!-- Game Header -->
+
         <HBox styleClass="game-header" alignment="CENTER" spacing="30">
             <Button text="Back to Lobby" styleClass="back-button" onAction="#handleBackToLobby" prefWidth="150"/>
             <Label fx:id="statusLabel" styleClass="status-label" text="Your turn: X" prefWidth="200"/>
@@ -47,6 +47,7 @@
             <HBox alignment="CENTER" spacing="30">
                 <Button fx:id="restartButton" text="Restart Game" styleClass="game-button" onAction="#handleRestart"/>
                 <Button fx:id="quitButton" text="Quit Game" styleClass="game-button" onAction="#handleQuit"/>
+                <Button fx:id="rulesButton" text="Rules" styleClass="game-button" onAction="#handleRules"/>
             </HBox>
         </VBox>
 

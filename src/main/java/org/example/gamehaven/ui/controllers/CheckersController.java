@@ -1,11 +1,14 @@
 package org.example.gamehaven.ui.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +29,7 @@ import java.util.Objects;
 public class CheckersController {
     public Button restartButton;
     public Button quitButton;
+    public Button rulesButton;
     @FXML private GridPane gameBoard;
     @FXML private Label statusLabel;
     @FXML private Label playerLabel;
@@ -54,6 +58,14 @@ public class CheckersController {
         } else {
             playerLabel.setText("Single Player");
         }
+
+        TabPane tabPane = new TabPane();
+        tabPane.widthProperty().addListener((obs, oldVal, newVal) -> {
+            double tabWidth = newVal.doubleValue() / tabPane.getTabs().size();
+            for (Tab tab : tabPane.getTabs()) {
+                tab.setStyle("-fx-pref-width: " + tabWidth + "px;");
+            }
+        });
 
         initializeBoard();
         updateCurrentPlayer();
@@ -186,7 +198,7 @@ public class CheckersController {
     }
 
     @FXML private void handleRestart() {
-        SceneManager.loadScene("games/checkers.fxml");
+        SceneManager.loadScene("games/checkers_rules.fxml");
     }
 
     @FXML private void handleQuit() {
@@ -195,5 +207,9 @@ public class CheckersController {
 
     @FXML private void handleBackToLobby() {
         SceneManager.loadScene("lobby/main.fxml");
+    }
+
+    public void handleRules(ActionEvent actionEvent) {
+        SceneManager.showRulesDialog("rules/checkers_rules.fxml");
     }
 }

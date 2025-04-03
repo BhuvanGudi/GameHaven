@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.gamehaven.games.checkers.CheckersRules"
+            prefHeight="750.0" prefWidth="1200.0"
+            stylesheets="@../../styles/checkers_rules.css">
+
+    <VBox alignment="CENTER" spacing="10" AnchorPane.topAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0">
+
+        <Label wrapText="true" text="Checkers Rules" styleClass="title-label">
+            <font>
+                <Font name="System Bold" size="28.0"/>
+            </font>
+            <VBox.margin>
+                <Insets top="20.0" bottom="10.0"/>
+            </VBox.margin>
+        </Label>
+
+        <TabPane fx:id="rulesTabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" styleClass="rules-tab-pane">
+            <Tab fx:id="rulesTabPage1" text="Basic Rules" styleClass="rule-tab">
+                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                    <VBox spacing="20" styleClass="rules-section">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label wrapText="true" text="Game Objective" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="The objective of Checkers is to capture all of your opponent's pieces or block them so they cannot make any moves."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <Label wrapText="true" text="Game Board" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <HBox alignment="CENTER" styleClass="board-container">
+                            <GridPane styleClass="checkers-board" alignment="CENTER" hgap="1" vgap="1">
+                                <!-- 8x8 Checkers board -->
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="7" GridPane.rowIndex="0"/>
+
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="5" GridPane.rowIndex="1"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="6" GridPane.rowIndex="1"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="7" GridPane.rowIndex="1"/>
+
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="5" GridPane.rowIndex="2"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="6" GridPane.rowIndex="2"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="7" GridPane.rowIndex="2"/>
+
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="4" GridPane.rowIndex="3"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="5" GridPane.rowIndex="3"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="6" GridPane.rowIndex="3"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="7" GridPane.rowIndex="3"/>
+
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="4" GridPane.rowIndex="4"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="5" GridPane.rowIndex="4"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="6" GridPane.rowIndex="4"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="7" GridPane.rowIndex="4"/>
+
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="4" GridPane.rowIndex="5"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="5" GridPane.rowIndex="5"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="6" GridPane.rowIndex="5"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="7" GridPane.rowIndex="5"/>
+
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="2" GridPane.rowIndex="6"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="3" GridPane.rowIndex="6"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="4" GridPane.rowIndex="6"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="5" GridPane.rowIndex="6"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="6" GridPane.rowIndex="6"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="7" GridPane.rowIndex="6"/>
+
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="7"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="7"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="4" GridPane.rowIndex="7"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="5" GridPane.rowIndex="7"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="6" GridPane.rowIndex="7"/>
+                                <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="7" GridPane.rowIndex="7"/>
+
+                                <!-- Initial pieces setup -->
+                                <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="5" GridPane.rowIndex="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="7" GridPane.rowIndex="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+
+                                <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="6" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+
+                                <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="5" GridPane.rowIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="7" GridPane.rowIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+
+                                <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="2" GridPane.rowIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="6" GridPane.rowIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+
+                                <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="3" GridPane.rowIndex="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="5" GridPane.rowIndex="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="7" GridPane.rowIndex="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+
+                                <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="2" GridPane.rowIndex="7" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="4" GridPane.rowIndex="7" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="6" GridPane.rowIndex="7" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                            </GridPane>
+                            <Label text="Standard 8×8 Checkers board with initial setup" wrapText="true" styleClass="board-caption"/>
+                        </HBox>
+
+                        <Label wrapText="true" text="Game Setup" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="• The game is played on an 8×8 checker white board.&#10;• Each player starts with 12 pieces placed on the dark squares of the three rows closest to them.&#10;• The player with the darker color white pieces (usually black) moves first.&#10;• Pieces can only move diagonally on dark squares."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <Label wrapText="true" text="How to Play" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="1. Regular pieces (not kings) can only move diagonally forward one square.&#10;2. If an opponent's piece is adjacent and the square immediately beyond it is empty, you must jump over the opponent's piece (capture).&#10;3. Capture white pieces are removed from the board.&#10;4. If a piece reaches the farthest row (the 'king row'), it is crowned a king and can move both forward and backward.&#10;5. Multiple jumps are allowed in a single turn if they're available.&#10;6. The game ends when one player has no pieces left or cannot make a legal move."
+                               wrapText="true" styleClass="rule-text"/>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <Tab fx:id="rulesTabPage2" text="Game Scenarios" styleClass="rule-tab">
+                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                    <VBox spacing="25" styleClass="rules-section">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label wrapText="true" text="Basic Moves" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <HBox spacing="40" alignment="CENTER">
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Regular Move" styleClass="scenario-title"/>
+                                <GridPane styleClass="checkers-board" alignment="CENTER" hgap="1" vgap="1">
+                                    <!-- Simplified board for demonstration -->
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark, selected-cell" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                    <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                    <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                </GridPane>
+                                <Label wrapText="true" text="White piece can move diagonally forward" styleClass="board-caption"/>
+                            </VBox>
+
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Capture Move" styleClass="scenario-title"/>
+                                <GridPane styleClass="checkers-board" alignment="CENTER" hgap="1" vgap="1">
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light, selected-cell" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+
+                                    <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                    <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                </GridPane>
+                                <Label wrapText="true" text="White can capture black by jumping over it" styleClass="board-caption"/>
+                            </VBox>
+                        </HBox>
+
+                        <Label wrapText="true" text="King Moves" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <HBox spacing="40" alignment="CENTER">
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="King Movement" styleClass="scenario-title"/>
+                                <GridPane styleClass="checkers-board" alignment="CENTER" hgap="1" vgap="1">
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light, selected-cell" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                    <Circle radius="20" styleClass="checkers-piece-white checkers-king" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                    <Circle radius="8" styleClass="checkers-king-indicator" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                </GridPane>
+                                <Label wrapText="true" text="Kings can move both forward and backward" styleClass="board-caption"/>
+                            </VBox>
+
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="King Capture" styleClass="scenario-title"/>
+                                <GridPane styleClass="checkers-board" alignment="CENTER" hgap="1" vgap="1">
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark, selected-cell" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+
+                                    <Circle radius="20" styleClass="checkers-piece-white checkers-king" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                    <Circle radius="8" styleClass="checkers-king-indicator" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                    <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                    <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                </GridPane>
+                                <Label wrapText="true" text="Kings can capture in any diagonal direction" styleClass="board-caption"/>
+                            </VBox>
+                        </HBox>
+
+                        <Label wrapText="true" text="Multiple Jumps" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <HBox alignment="CENTER" styleClass="scenario-box">
+                            <VBox alignment="CENTER">
+                                <Label wrapText="true" text="Multiple Capture" styleClass="scenario-title"/>
+                                <GridPane styleClass="checkers-board" alignment="CENTER" hgap="1" vgap="1">
+                                    <!-- Larger board for multiple jumps -->
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light, selected-cell" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                                    <Rectangle width="50" height="50" styleClass="checkers-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+
+                                    <Circle radius="20" styleClass="checkers-piece-white" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                    <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                    <Circle radius="20" styleClass="checkers-piece-black" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                </GridPane>
+                                <Label wrapText="true" text="White can perform a double jump to capture both black pieces" styleClass="board-caption"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <Tab fx:id="rulesTabPage3" text="Variants" styleClass="rule-tab">
+                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                    <VBox spacing="15" styleClass="rules-section">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label wrapText="true" text="Game Variations" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label wrapText="true" text="International Draughts" styleClass="subsection-header">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+
+                        <Label wrapText="true" text="Played on a 10×10 board with 20 pieces per player. Kings (called 'flying kings') can move any distance diagonally."
+                               styleClass="rule-text"/>
+
+                        <Label wrapText="true" text="Canadian Checkers" styleClass="subsection-header">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="Played on a 12×12 board with 30 pieces per player. Similar to International Draughts but with a larger board."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <Label wrapText="true" text="Pool Checkers" styleClass="subsection-header">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+
+                        <Label wrapText="true" text="Uses the same board as standard checkers but with different capture rules: any available capture can be chosen (not forced to take the maximum)."
+                               styleClass="rule-text"/>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <Tab fx:id="rulesTabPage4" text="History" styleClass="rule-tab">
+                <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
+                    <VBox spacing="15" styleClass="rules-section">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label wrapText="true" text="Game History" styleClass="section-header">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+
+                        <Label text="Checkers is one of the oldest known games, with origins tracing back to 3000 BCE in ancient Mesopotamia. The modern version of the game developed in the 12th century in southern France."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <Label text="The first computer program to play checkers was developed in 1952 by Arthur Samuel. In 1994, the Chinook checkers program became the first to win the human world championship."
+                               wrapText="true" styleClass="rule-text"/>
+
+                        <HBox alignment="CENTER">
+                            <VBox alignment="CENTER" styleClass="scenario-box">
+                                <Label wrapText="true" text="Historical Timeline" styleClass="scenario-title"/>
+                                <VBox styleClass="timeline-box" spacing="15">
+                                    <HBox spacing="10">
+                                        <Label wrapText="true" text="3000 BCE" styleClass="timeline-date"/>
+                                        <Label text="Earliest known checkers-like game in Mesopotamia" wrapText="true"
+                                               styleClass="timeline-event"/>
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <Label wrapText="true" text="12th c." styleClass="timeline-date"/>
+                                        <Label text="Modern rules developed in southern France" wrapText="true"
+                                               styleClass="timeline-event"/>
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <Label wrapText="true" text="1952" styleClass="timeline-date"/>
+                                        <Label text="First computer checkers program by Arthur Samuel" wrapText="true"
+                                               styleClass="timeline-event"/>
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <Label wrapText="true" text="1994" styleClass="timeline-date"/>
+                                        <Label text="Chinook program defeats human world champion" wrapText="true" styleClass="timeline-event"/>
+                                    </HBox>
+                                    <HBox spacing="10">
+                                        <Label wrapText="true" text="2007" styleClass="timeline-date"/>
+                                        <Label text="Checkers solved - perfect play leads to a draw" wrapText="true" styleClass="timeline-event"/>
+                                    </HBox>
+                                </VBox>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+        </TabPane>
+
+        <HBox alignment="CENTER" spacing="20" styleClass="button-container">
+            <Button text="Back to Lobby" styleClass="menu-button"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

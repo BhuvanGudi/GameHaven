@@ -7,6 +7,8 @@ import org.example.gamehaven.auth.AuthService;
 import org.example.gamehaven.core.SceneManager;
 
 public class AuthController {
+    public Button loginButton;
+    public Button registerButton;
     @FXML private TextField emailField;
     @FXML private PasswordField passwordField;
     @FXML private Label errorLabel;

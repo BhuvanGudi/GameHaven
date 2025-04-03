@@ -2,6 +2,7 @@ package org.example.gamehaven.core;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import org.example.gamehaven.utils.SoundManager;
 
 public class Main extends Application {
     @Override
@@ -12,6 +13,9 @@ public class Main extends Application {
 
         // Set up scene manager
         SceneManager.setPrimaryStage(primaryStage);
+
+        // Start background music
+        SoundManager.getInstance().playBackgroundMusic();
 
         // Load initial scene
         SceneManager.loadScene("auth/login.fxml");

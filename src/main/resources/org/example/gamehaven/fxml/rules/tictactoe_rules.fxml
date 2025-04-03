@@ -9,7 +9,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.gamehaven.games.tictactoe.TicTacToeRules"
-            prefHeight="600.0" prefWidth="800.0"
+            prefHeight="750.0" prefWidth="1200.0"
             stylesheets="@../../styles/tictactoe_rules.css">
 
     <VBox alignment="CENTER" spacing="10" AnchorPane.topAnchor="0.0"
@@ -25,7 +25,7 @@
             </VBox.margin>
         </Label>
 
-        <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" styleClass="rules-tab-pane">
+        <TabPane fx:id="rulesTabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" styleClass="rules-tab-pane">
             <Tab text="Basic Rules" styleClass="rule-tab">
                 <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="rules-scroll-pane">
                     <VBox spacing="20" styleClass="rules-section">
