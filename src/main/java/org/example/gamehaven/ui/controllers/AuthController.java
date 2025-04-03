@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.example.gamehaven.auth.AuthService;
 import org.example.gamehaven.auth.User;
-import org.example.gamehaven.auth.UserSession;
 import org.example.gamehaven.core.SceneManager;
 
 public class AuthController {
@@ -27,25 +26,31 @@ public class AuthController {
             return;
         }
 
-        authService.login(email, password, new AuthService.AuthCallback() {
-                    @Override
-                    public void onSuccess(User user) {}
+        loginButton.setDisable(true);
+        errorLabel.setText("Signing in...");
 
-                    @Override
-                    public void onSuccess() {
-                        loginButton.setDisable(true);
-                        errorLabel.setText("Signing in...");
-                        Platform.runLater(() ->
-                                errorLabel.setText("Login successful! Enjoy gaming")
-                        );
-                    }
-                    @Override
-                    public void onError(String error) {
-                        Platform.runLater(() ->
-                                errorLabel.setText("Login error: " + error)
-                        );
-                    }
+        authService.login(email, password, new AuthService.AuthCallback() {
+            @Override
+            public void onSuccess(User user) {
+                Platform.runLater(() -> {
+                    errorLabel.setText("Login successful! Welcome " + user.getUsername());
+                    SceneManager.loadScene("lobby/main.fxml");
                 });
+            }
+
+            @Override
+            public void onSuccess() {
+                // Not used for login
+            }
+
+            @Override
+            public void onError(String error) {
+                Platform.runLater(() -> {
+                    errorLabel.setText("Login failed: " + error);
+                    loginButton.setDisable(false);
+                });
+            }
+        });
     }
 
     @FXML
@@ -58,21 +63,31 @@ public class AuthController {
             return;
         }
 
+        registerButton.setDisable(true);
+        errorLabel.setText("Registering...");
+
         authService.register(email, password, email.split("@")[0], new AuthService.AuthCallback() {
             @Override
-            public void onSuccess(User user) {}
+            public void onSuccess(User user) {
+                // Not used for registration
+            }
 
             @Override
             public void onSuccess() {
-                Platform.runLater(() ->
-                        errorLabel.setText("Registration successful! Please login")
-                );
+                Platform.runLater(() -> {
+                    errorLabel.setText("Registration successful! You can now login");
+                    registerButton.setDisable(false);
+                    // Clear password field for security
+                    passwordField.clear();
+                });
             }
+
             @Override
             public void onError(String error) {
-                Platform.runLater(() ->
-                        errorLabel.setText("Registration error: " + error)
-                );
+                Platform.runLater(() -> {
+                    errorLabel.setText("Registration failed: " + error);
+                    registerButton.setDisable(false);
+                });
             }
         });
     }
