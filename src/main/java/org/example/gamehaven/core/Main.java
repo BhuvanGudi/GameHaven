@@ -18,7 +18,7 @@ public class Main extends Application {
         SoundManager.getInstance().playBackgroundMusic();
 
         // Load initial scene
-        SceneManager.loadScene("lobby/main.fxml");
+        SceneManager.loadScene("auth/login.fxml");
     }
 
     public static void main(String[] args) {

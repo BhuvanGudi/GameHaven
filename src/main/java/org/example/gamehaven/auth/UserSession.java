@@ -7,10 +7,6 @@ public class UserSession {
         currentUser = new User(userId, username);
     }
 
-    public static void setCurrentUser(User user) {
-        currentUser = user;
-    }
-
     public static User getCurrentUser() {
         return currentUser;
     }

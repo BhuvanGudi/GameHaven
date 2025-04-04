@@ -15,7 +15,7 @@ public class GameServer {
     private DatabaseReference database;
     private DatabaseReference currentGameRef;
     private String gameId;
-    private String playerId;
+    private final String playerId;
     private MoveListener moveListener;
 
     public GameServer() {

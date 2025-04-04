@@ -2,7 +2,7 @@ package org.example.gamehaven.games.checkers;
 
 public class CheckersGame {
     private static final int BOARD_SIZE = 8;
-    private Piece[][] board;
+    private final Piece[][] board;
     private Piece.PieceColor currentPlayer;
     private String gameId;
 

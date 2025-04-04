@@ -1,109 +1,57 @@
 package org.example.gamehaven.auth;
 
-import com.google.auth.oauth2.GoogleCredentials;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
-import com.google.firebase.auth.UserRecord;
+import com.google.firebase.auth.*;
 import com.google.firebase.database.*;
-
-import java.io.InputStream;
-import java.util.concurrent.CompletableFuture;
 
 public class AuthService {
     private final FirebaseAuth auth;
-    private final DatabaseReference databaseRef;
+    private final DatabaseReference database;
+
+    public AuthService() {
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance().getReference();
+    }
 
     public interface AuthCallback {
-        void onSuccess(User user);
         void onSuccess();
         void onError(String errorMessage);
     }
 
-    public AuthService() {
-        if (FirebaseApp.getApps().isEmpty()) {
-            try (InputStream serviceAccount = getClass().getResourceAsStream("/firebase-config.json")) {
-                if (serviceAccount == null) {
-                    throw new RuntimeException("Firebase config file not found");
-                }
-                FirebaseOptions options = FirebaseOptions.builder()
-                        .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                        .setDatabaseUrl("https://gamehaven-31f9f.firebaseio.com")
-                        .build();
-                FirebaseApp.initializeApp(options);
-            } catch (Exception e) {
-                throw new RuntimeException("Firebase initialization failed", e);
-            }
-        }
-        auth = FirebaseAuth.getInstance();
-        databaseRef = FirebaseDatabase.getInstance().getReference();
-    }
-
-    public CompletableFuture<Void> register(String email, String password, String username) {
-        CompletableFuture<Void> future = new CompletableFuture<>();
+    public void register(String email, String password, String username, AuthCallback callback) {
         try {
             UserRecord.CreateRequest request = new UserRecord.CreateRequest()
                     .setEmail(email)
                     .setPassword(password);
+
+            // Create user
             UserRecord userRecord = auth.createUser(request);
-            databaseRef.child("users").child(userRecord.getUid())
-                    .setValue(new User(userRecord.getUid(), username), (error, ref) -> {
-                        if (error == null) {
-                            future.complete(null);
-                        } else {
-                            future.completeExceptionally(error.toException());
-                        }
-                    });
+
+            // Save to database (updated approach)
+            DatabaseReference userRef = database.child("users").child(userRecord.getUid());
+            userRef.setValue(new User(username, email), (databaseError, ref) -> {
+                if (databaseError != null) {
+                    callback.onError(databaseError.getMessage());
+                } else {
+                    callback.onSuccess();
+                }
+            });
+
         } catch (FirebaseAuthException e) {
-            future.completeExceptionally(e);
+            callback.onError(e.getMessage());
         }
-        return future;
     }
 
-    public CompletableFuture<User> login(String email, String password) {
-        CompletableFuture<User> future = new CompletableFuture<>();
+    // Login verification using Admin SDK
+    public void login(String email, String password, AuthCallback callback) {
         try {
+            // Verify user exists (Admin SDK doesn't have password verification)
             UserRecord userRecord = auth.getUserByEmail(email);
 
-            databaseRef.child("users").child(userRecord.getUid())
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            User user = dataSnapshot.getValue(User.class);
-                            if (user == null) {
-                                user = new User(userRecord.getUid(), email.split("@")[0]);
-                            }
-                            UserSession.setCurrentUser(user);
-                            future.complete(user);
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            future.completeExceptionally(databaseError.toException());
-                        }
-                    });
+            // In real apps, you'd verify password through a client SDK or custom token
+            UserSession.createSession(userRecord.getUid(), email.split("@")[0]);
+            callback.onSuccess();
         } catch (FirebaseAuthException e) {
-            future.completeExceptionally(e);
+            callback.onError("Invalid credentials or user not found");
         }
-        return future;
-    }
-
-    public void register(String email, String password, String username, AuthCallback callback) {
-        register(email, password, username)
-                .thenRun(callback::onSuccess)
-                .exceptionally(ex -> {
-                    callback.onError(ex.getMessage());
-                    return null;
-                });
-    }
-
-    public void login(String email, String password, AuthCallback callback) {
-        login(email, password)
-                .thenAccept(callback::onSuccess)
-                .exceptionally(ex -> {
-                    callback.onError(ex.getMessage());
-                    return null;
-                });
     }
 }
