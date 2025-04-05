@@ -1,5 +1,6 @@
 package org.example.gamehaven.ui.controllers;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,8 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.util.Duration;
 import org.example.gamehaven.auth.User;
 import org.example.gamehaven.auth.UserSession;
+import org.example.gamehaven.core.GameMode;
 import org.example.gamehaven.core.SceneManager;
 import org.example.gamehaven.games.connect4.ConnectFourGame;
 import org.example.gamehaven.games.connect4.ConnectFourAI;
@@ -21,18 +24,18 @@ public class ConnectFourController {
     @FXML private Label playerLabel;
     @FXML private Button restartButton;
     @FXML private Button quitButton;
-    @FXML private Button modeButton;
     @FXML private Button col0, col1, col2, col3, col4, col5, col6;
 
     private ConnectFourGame game;
     private ConnectFourAI ai;
     private boolean vsAI;
+    private SoundManager soundManager;
 
     @FXML
     public void initialize() {
         game = new ConnectFourGame();
         ai = new ConnectFourAI();
-        vsAI = false;
+        vsAI = LobbyController.selectedGameMode == GameMode.SINGLE_PLAYER;
         initializeBoard();
         updateUI();
     }
@@ -69,15 +72,21 @@ public class ConnectFourController {
         if (game.checkWin()) {
             statusLabel.setText("Player " + (game.getCurrentPlayer() == 'R' ? "Red" : "Yellow") + " wins!");
             User currentUser = UserSession.getCurrentUser();
-            currentUser.incrementWins();
-            currentUser.incrementC4Wins();
-            SoundManager.getInstance().playWinSound();
+
+            if (vsAI && game.getCurrentPlayer() == 'Y') {
+                currentUser.incrementLosses();
+                currentUser.incrementC4Losses();
+                SoundManager.getInstance().playLoseSound(); // Will handle volume automatically
+            } else {
+                currentUser.incrementWins();
+                currentUser.incrementC4Wins();
+                SoundManager.getInstance().playWinSound();
+            }
         } else if (game.isBoardFull()) {
             statusLabel.setText("Game ended in a draw!");
             User currentUser = UserSession.getCurrentUser();
-            currentUser.incrementWins();
             currentUser.incrementC4Draws();
-            SoundManager.getInstance().playWinSound();
+            SoundManager.getInstance().playDrawSound();
         } else {
             statusLabel.setText("Your turn: " + (game.getCurrentPlayer() == 'R' ? "Red" : "Yellow"));
             playerLabel.setText(vsAI ? "Player vs AI" : "Player 1 vs Player 2");
@@ -88,11 +97,15 @@ public class ConnectFourController {
     }
 
     private void makeAIMove() {
-        int col = ai.makeMove(game);
-        if (col != -1) {
-            game.makeMove(col);
-            updateUI();
-        }
+        PauseTransition delay = new PauseTransition(Duration.seconds(0.5));
+        delay.setOnFinished(event -> {
+            int col = ai.makeMove(game);
+            if (col != -1) {
+                game.makeMove(col);
+                updateUI();
+            }
+        });
+        delay.play();
     }
 
     @FXML
@@ -119,25 +132,13 @@ public class ConnectFourController {
     }
 
     @FXML
-    private void handleModeSwitch() {
-        vsAI = !vsAI;
-        modeButton.setText(vsAI ? "Switch to Multiplayer" : "Switch to AI");
-        game = new ConnectFourGame();
-        updateUI();
-    }
-
-    @FXML
     private void handleQuit() {
         SceneManager.loadScene("lobby/main.fxml");
-        SoundManager soundManager = SoundManager.getInstance();
-        soundManager.setVolume(0.7);
     }
 
     @FXML
     private void handleBackToLobby() {
         SceneManager.loadScene("lobby/main.fxml");
-        SoundManager soundManager = SoundManager.getInstance();
-        soundManager.setVolume(0.7);
     }
 
     public void handleRules(ActionEvent actionEvent) {

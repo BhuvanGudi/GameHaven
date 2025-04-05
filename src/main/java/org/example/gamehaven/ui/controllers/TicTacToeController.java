@@ -173,7 +173,6 @@ public class TicTacToeController {
             updates.put("tttLosses", user.getTttLosses());
             updates.put("tttDraws", user.getTttDraws());
 
-            // Modern Firebase syntax with completion listener
             userRef.updateChildren(updates, (error, ref) -> {
                 if (error != null) {
                     logger.error("Failed to update user stats: {}", error.getMessage());
@@ -207,15 +206,11 @@ public class TicTacToeController {
     @FXML
     private void handleQuit() {
         SceneManager.loadScene("lobby/main.fxml");
-        SoundManager soundManager = SoundManager.getInstance();
-        soundManager.setVolume(0.5);
     }
 
     @FXML
     private void handleBackToLobby() {
         SceneManager.loadScene("lobby/main.fxml");
-        SoundManager soundManager = SoundManager.getInstance();
-        soundManager.setVolume(0.5);
     }
 
     public void handleRules(ActionEvent actionEvent) {SceneManager.showRulesDialog("rules/tictactoe_rules.fxml");}

@@ -8,15 +8,15 @@ public class CheckersGame {
 
     public CheckersGame() {
         this.board = new Piece[BOARD_SIZE][BOARD_SIZE];
-        this.currentPlayer = Piece.PieceColor.RED;
+        this.currentPlayer = Piece.PieceColor.WHITE;
         initializeBoard();
     }
 
     private void initializeBoard() {
-        // Set up red pieces (top side)
+        // Set up white pieces (top side)
         for (int row = 0; row < 3; row++) {
             for (int col = (row + 1) % 2; col < BOARD_SIZE; col += 2) {
-                board[row][col] = new Piece(Piece.PieceColor.RED, row, col);
+                board[row][col] = new Piece(Piece.PieceColor.WHITE, row, col);
             }
         }
 
@@ -33,14 +33,17 @@ public class CheckersGame {
     }
 
     public boolean isValidMove(Piece piece, int toRow, int toCol) {
-        if (piece == null || piece.getColor() != currentPlayer) {
-            return false;
-        }
+        if (piece == null || piece.getColor() != currentPlayer) return false;
 
         int rowDiff = toRow - piece.getRow();
         int colDiff = toCol - piece.getCol();
 
-        // Basic move validation
+        // Normal pieces can only move forward
+        if (!piece.isKing()) {
+            if (piece.getColor() == Piece.PieceColor.WHITE && rowDiff <= 0) return false;
+            if (piece.getColor() == Piece.PieceColor.BLACK && rowDiff >= 0) return false;
+        }
+
         if (Math.abs(rowDiff) == 1 && Math.abs(colDiff) == 1) {
             return board[toRow][toCol] == null;
         }
@@ -59,7 +62,7 @@ public class CheckersGame {
         int rowDiff = toRow - piece.getRow();
         int colDiff = toCol - piece.getCol();
 
-        if (Math.abs(rowDiff) == 2 && Math.abs(colDiff) == 2) {
+        if (Math.abs(rowDiff) == 2) {
             int midRow = (piece.getRow() + toRow) / 2;
             int midCol = (piece.getCol() + toCol) / 2;
             board[midRow][midCol] = null;
@@ -69,13 +72,12 @@ public class CheckersGame {
         piece.setPosition(toRow, toCol);
         board[toRow][toCol] = piece;
 
-        if ((piece.getColor() == Piece.PieceColor.RED && toRow == BOARD_SIZE - 1) ||
+        if ((piece.getColor() == Piece.PieceColor.WHITE && toRow == BOARD_SIZE - 1) ||
                 (piece.getColor() == Piece.PieceColor.BLACK && toRow == 0)) {
             piece.promoteToKing();
         }
 
-        currentPlayer = (currentPlayer == Piece.PieceColor.RED) ?
-                Piece.PieceColor.BLACK : Piece.PieceColor.RED;
+        currentPlayer = (currentPlayer == Piece.PieceColor.WHITE) ? Piece.PieceColor.BLACK : Piece.PieceColor.WHITE;
     }
 
     public Piece.PieceColor getCurrentPlayer() {
@@ -87,5 +89,43 @@ public class CheckersGame {
             return board[row][col];
         }
         return null;
+    }
+
+    public boolean isGameOver() {
+        int whitePieces = 0;
+        int blackPieces = 0;
+
+        for (int row = 0; row < BOARD_SIZE; row++) {
+            for (int col = 0; col < BOARD_SIZE; col++) {
+                Piece piece = board[row][col];
+                if (piece != null) {
+                    if (piece.getColor() == Piece.PieceColor.WHITE) whitePieces++;
+                    else blackPieces++;
+                }
+            }
+        }
+        return whitePieces == 0 || blackPieces == 0 || !hasValidMoves(currentPlayer);
+    }
+
+    public Piece.PieceColor getWinner() {
+        if (!(hasValidMoves(Piece.PieceColor.WHITE))) return Piece.PieceColor.BLACK;
+        if (!(hasValidMoves(Piece.PieceColor.BLACK))) return Piece.PieceColor.WHITE;
+        return null;
+    }
+
+    private boolean hasValidMoves(Piece.PieceColor color) {
+        for (int row = 0; row < BOARD_SIZE; row++) {
+            for (int col = 0; col < BOARD_SIZE; col++) {
+                Piece piece = board[row][col];
+                if (piece != null && piece.getColor() == color) {
+                    for (int r = 0; r < BOARD_SIZE; r++) {
+                        for (int c = 0; c < BOARD_SIZE; c++) {
+                            if (isValidMove(piece, r, c)) return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

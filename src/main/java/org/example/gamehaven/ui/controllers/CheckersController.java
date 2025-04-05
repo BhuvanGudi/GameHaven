@@ -1,5 +1,6 @@
 package org.example.gamehaven.ui.controllers;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
@@ -18,7 +19,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
+import org.example.gamehaven.auth.User;
+import org.example.gamehaven.auth.UserSession;
 import org.example.gamehaven.core.SceneManager;
+import org.example.gamehaven.games.checkers.CheckersAI;
 import org.example.gamehaven.games.checkers.CheckersGame;
 import org.example.gamehaven.games.checkers.Piece;
 import org.example.gamehaven.multiplayer.GameServer;
@@ -38,26 +43,28 @@ public class CheckersController {
     @FXML private ImageView currentPlayerImage;
 
     private CheckersGame game;
-    private GameServer gameServer;
-    private boolean isMultiplayer;
     private Piece selectedPiece;
+    private CheckersAI ai;
+    private boolean vsAI;
 
     @FXML
     public void initialize() {
-        Image redPieceImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/org/example/gamehaven/images/avatars/default_male.png")));
+        Image whitePieceImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/org/example/gamehaven/images/avatars/default_male.png")));
         Image blackPieceImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/org/example/gamehaven/images/avatars/default_female.png")));
 
         selectedPieceImage.setImage(blackPieceImage);
-        currentPlayerImage.setImage(redPieceImage);
-        isMultiplayer = LobbyController.selectedGameMode == GameMode.MULTIPLAYER;
+        currentPlayerImage.setImage(whitePieceImage);
+        boolean isMultiplayer = LobbyController.selectedGameMode == GameMode.MULTIPLAYER;
         game = new CheckersGame();
 
         if (isMultiplayer) {
-            gameServer = new GameServer();
+            GameServer gameServer = new GameServer();
             playerLabel.setText("Waiting for opponent...");
             setupMultiplayer();
         } else {
-            playerLabel.setText("Single Player");
+            vsAI = true;
+            ai = new CheckersAI();
+            playerLabel.setText("Player vs AI");
         }
 
         TabPane tabPane = new TabPane();
@@ -95,11 +102,57 @@ public class CheckersController {
         }
     }
 
+    private void updateUI() {
+        if (game.isGameOver()) {
+            Piece.PieceColor winner = game.getWinner();
+            User currentUser = UserSession.getCurrentUser();
+            if (winner != null) {
+                statusLabel.setText(winner + " wins!");
+                if (vsAI) {
+                    if (winner == Piece.PieceColor.WHITE) {
+                        currentUser.incrementWins();
+                        currentUser.incrementCheckersWins();
+                        SoundManager.getInstance().playWinSound();
+                    } else {
+                        currentUser.incrementLosses();
+                        currentUser.incrementCheckersLosses();
+                        SoundManager.getInstance().playLoseSound();
+                    }
+                }
+            } else {
+                statusLabel.setText("Game ended in draw!");
+                currentUser.incrementCheckersDraws();
+                SoundManager.getInstance().playDrawSound();
+            }
+        } else {
+            updateCurrentPlayer();
+        }
+    }
+
+    private void handleCellClick(int row, int col, MouseEvent event) {
+        if (selectedPiece != null && game.isValidMove(selectedPiece, row, col)) {
+            game.makeMove(selectedPiece, row, col);
+            updateBoard();
+            selectedPiece = null;
+            updateUI();
+        }
+    }
+
+    private void handleAIMove() {
+        int[] move = ai.makeMove(game);
+        if (move != null) {
+            Piece piece = game.getPieceAt(move[0], move[1]);
+            game.makeMove(piece, move[2], move[3]);
+            updateBoard();
+            updateUI();
+        }
+    }
+
     private void addPieceToBoard(int row, int col, Piece piece) {
         Circle pieceCircle = new Circle(30);
         pieceCircle.getStyleClass().add("checkers-piece");
-        pieceCircle.getStyleClass().add(piece.getColor() == Piece.PieceColor.RED ?
-                "checkers-piece-red" : "checkers-piece-black");
+        pieceCircle.getStyleClass().add(piece.getColor() == Piece.PieceColor.WHITE ?
+                "checkers-piece-white" : "checkers-piece-black");
 
         if (piece.isKing()) {
             Circle kingIndicator = new Circle(12);
@@ -122,28 +175,11 @@ public class CheckersController {
         }
     }
 
-    private void handleCellClick(int row, int col, MouseEvent event) {
-        if (selectedPiece != null && game.isValidMove(selectedPiece, row, col)) {
-            game.makeMove(selectedPiece, row, col);
-            updateBoard();
-
-            if (isMultiplayer) {
-                gameServer.makeMove(game.getGameId(),
-                        Integer.parseInt(selectedPiece.getRow() + "," + selectedPiece.getCol() + "," + row + "," + col));
-            }
-
-            selectedPiece = null;
-//            selectedPieceImage.setFill(Color.TRANSPARENT);
-            updateCurrentPlayer();
-        }
-    }
-
     private void handlePieceClick(MouseEvent event) {
         Node source = (Node) event.getSource();
         Piece clickedPiece = (Piece) source.getUserData();
 
         if (clickedPiece.getColor() == game.getCurrentPlayer()) {
-            // Clear previous selection effect
             gameBoard.getChildren().forEach(node -> {
                 if (node.getEffect() instanceof DropShadow effect) {
                     if (effect.getColor() == Color.YELLOW) {
@@ -153,12 +189,11 @@ public class CheckersController {
                 }
             });
 
-            // Highlight a selected piece
             selectedPiece = clickedPiece;
             source.setEffect(new DropShadow(15, Color.YELLOW));
 
             Image pieceImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream(
-                    clickedPiece.getColor() == Piece.PieceColor.RED ?
+                    clickedPiece.getColor() == Piece.PieceColor.WHITE ?
                             "/org/example/gamehaven/images/avatars/default_male.png" :
                             "/org/example/gamehaven/images/avatars/default_female.png" // or different image
             )));
@@ -167,7 +202,6 @@ public class CheckersController {
     }
 
     private void updateBoard() {
-        // Remove only piece nodes, keep board squares
         gameBoard.getChildren().removeIf(node ->
                 (node instanceof Circle && node.getUserData() instanceof Piece) ||
                         (node instanceof StackPane && node.getUserData() instanceof Piece));
@@ -183,19 +217,25 @@ public class CheckersController {
     }
 
     private void updateCurrentPlayer() {
-        String player = game.getCurrentPlayer() == Piece.PieceColor.RED ? "Red" : "Black";
+        String player = game.getCurrentPlayer() == Piece.PieceColor.WHITE ? "White" : "Black";
         statusLabel.setText("Current turn: " + player);  // fixed: Removed STR. template
 
         Image playerImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream(
-                game.getCurrentPlayer() == Piece.PieceColor.RED ?
+                game.getCurrentPlayer() == Piece.PieceColor.WHITE ?
                         "/org/example/gamehaven/images/avatars/default_male.png" :
                         "/org/example/gamehaven/images/avatars/default_female.png" // or different image
         )));
         currentPlayerImage.setImage(playerImage);
+
+        if (vsAI && game.getCurrentPlayer() == Piece.PieceColor.BLACK) {
+            PauseTransition delay = new PauseTransition(Duration.seconds(0.5));
+            delay.setOnFinished(event -> handleAIMove());
+            delay.play();
+        }
     }
 
     private void setupMultiplayer() {
-        // Multiplayer implementation would go here
+
     }
 
     @FXML private void handleRestart() {
@@ -204,14 +244,10 @@ public class CheckersController {
 
     @FXML private void handleQuit() {
         SceneManager.loadScene("lobby/main.fxml");
-        SoundManager soundManager = SoundManager.getInstance();
-        soundManager.setVolume(0.7);
     }
 
     @FXML private void handleBackToLobby() {
         SceneManager.loadScene("lobby/main.fxml");
-        SoundManager soundManager = SoundManager.getInstance();
-        soundManager.setVolume(0.7);
     }
 
     public void handleRules(ActionEvent actionEvent) {

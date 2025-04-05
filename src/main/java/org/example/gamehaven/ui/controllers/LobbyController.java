@@ -6,7 +6,6 @@ import javafx.scene.control.*;
 import org.example.gamehaven.auth.UserSession;
 import org.example.gamehaven.core.SceneManager;
 import org.example.gamehaven.core.GameMode;
-import org.example.gamehaven.utils.SoundManager;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,24 +27,18 @@ public class LobbyController implements Initializable {
     private void handleTicTacToe() {
         selectedGameMode = singlePlayerRadio.isSelected() ? GameMode.SINGLE_PLAYER : GameMode.MULTIPLAYER;
         SceneManager.loadScene("games/tictactoe.fxml");
-        SoundManager soundManager = SoundManager.getInstance();
-        soundManager.setVolume(0.1);
     }
 
     @FXML
     private void handleConnectFour() {
         selectedGameMode = singlePlayerRadio.isSelected() ? GameMode.SINGLE_PLAYER : GameMode.MULTIPLAYER;
         SceneManager.loadScene("games/connectfour.fxml");
-        SoundManager soundManager = SoundManager.getInstance();
-        soundManager.setVolume(0.1);
     }
 
     @FXML
     private void handleCheckers() {
         selectedGameMode = singlePlayerRadio.isSelected() ? GameMode.SINGLE_PLAYER : GameMode.MULTIPLAYER;
         SceneManager.loadScene("games/checkers.fxml");
-        SoundManager soundManager = SoundManager.getInstance();
-        soundManager.setVolume(0.1);
     }
 
     @FXML

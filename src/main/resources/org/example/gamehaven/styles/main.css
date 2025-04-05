@@ -346,7 +346,7 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 10, 0, 0, 0);
 }
 
-.checkers-piece-red {
+.checkers-piece-white {
     -fx-fill: radial-gradient(center 50% 50%, radius 50%, #f4f4f4, #d0d0d0);
     -fx-stroke: #a0a0a0;
 }
@@ -401,7 +401,7 @@
     -fx-effect: innershadow(gaussian, rgba(0,0,0,0.7), 10, 0.5, 0, 0), innershadow(gaussian, rgba(255,215,0,0.3), 5, 0.5, 0, 0);
 }
 
-.connect-four-piece-red {
+.connect-four-piece-white {
     -fx-fill: radial-gradient(center 50% 50%, radius 50%, #ff7777, #cc0000);
     -fx-stroke: #8B0000;
     -fx-stroke-width: 2;
@@ -479,4 +479,81 @@
 
 .volume-slider .thumb {
     -fx-background-color: #ffffff;
+}
+
+/* Leaderboard CSS */
+.leaderboard-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-fill: #e0e0e0;
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 12px;
+}
+
+.leaderboard-tabs {
+    -fx-background-color: #3d3d3d;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 10;
+}
+
+.leaderboard-tabs .tab {
+    -fx-background-color: #3d3d3d;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-padding: 8 16;
+}
+
+.leaderboard-tabs .tab:selected {
+    -fx-background-color: #3d3d3d;
+}
+
+.leaderboard-stats {
+    -fx-background-color: #3d3d3d;
+    -fx-padding: 5px;
+}
+
+.leaderboard-game-stats {
+    -fx-background-color: #3d3d3d;
+    -fx-text-fill: #FFFFFF;
+    -fx-table-cell-border-color: transparent;
+}
+
+.leaderboard-game-stats .column-header {
+    -fx-background-color: #4d4d4d;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-padding: 8 12;
+}
+
+.leaderboard-game-stats .table-cell {
+    -fx-padding: 8 12;
+    -fx-border-color: transparent;
+    -fx-alignment: CENTER;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #3d3d3d;
+}
+
+.leaderboard-game-stats .table-row-cell {
+    -fx-background-color: #3d3d3d;
+}
+
+.leaderboard-button {
+    -fx-background-color: #5d5d5d;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 8 16;
+}
+
+.leaderboard-title,
+.leaderboard-tabs .tab,
+.leaderboard-tabs .tab .text,
+.leaderboard-tabs .tab-label,
+.leaderboard-game-stats,
+.leaderboard-game-stats .column-header .label,
+.leaderboard-game-stats .table-cell,
+.leaderboard-game-stats .table-cell .text,
+.leaderboard-button,
+.leaderboard-button .text {
+    -fx-text-fill: #FFFFFF !important;
 }

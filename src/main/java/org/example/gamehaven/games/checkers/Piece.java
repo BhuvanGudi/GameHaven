@@ -4,7 +4,7 @@ import javafx.scene.paint.Color;
 
 public class Piece {
     public enum PieceColor {
-        RED(Color.RED),
+        WHITE(Color.WHITE),
         BLACK(Color.BLACK);
 
         private final Color fxColor;

@@ -10,7 +10,7 @@ public class SoundManager {
     private double volume = 0.5; // Default volume (50%)
 
     private SoundManager() {
-        // Private constructor for singleton
+
     }
 
     public static SoundManager getInstance() {
@@ -37,7 +37,8 @@ public class SoundManager {
 
     public void stopBackgroundMusic() {
         if (backgroundPlayer != null) {
-            backgroundPlayer.stop();
+            backgroundPlayer.pause();
+            backgroundPlayer.setVolume(0);
         }
     }
 
@@ -53,24 +54,30 @@ public class SoundManager {
     }
 
     public void playWinSound() {
-        playSoundEffect("/org/example/gamehaven/sounds/win.wav");
+        playGameEndSound("/org/example/gamehaven/sounds/win.wav");
     }
 
     public void playLoseSound() {
-        playSoundEffect("/org/example/gamehaven/sounds/lose.wav");
+        playGameEndSound("/org/example/gamehaven/sounds/lose.wav");
     }
 
     public void playDrawSound() {
-        playSoundEffect("/org/example/gamehaven/sounds/draw.mp3");
+        playGameEndSound("/org/example/gamehaven/sounds/draw.mp3");
     }
 
-    private void playSoundEffect(String soundFile) {
+    private void playGameEndSound(String soundFile) {
+        double originalVolume = this.volume;
+
+        setVolume(0);
+
         URL soundUrl = getClass().getResource(soundFile);
         if (soundUrl != null) {
             Media sound = new Media(soundUrl.toString());
-            MediaPlayer soundEffectPlayer = new MediaPlayer(sound);
-            soundEffectPlayer.setVolume(volume);
-            soundEffectPlayer.play();
+            MediaPlayer effectPlayer = new MediaPlayer(sound);
+            effectPlayer.setVolume(1.0);
+            effectPlayer.play();
+
+            effectPlayer.setOnEndOfMedia(() -> setVolume(originalVolume));
         }
     }
 }

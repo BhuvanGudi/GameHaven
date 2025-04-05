@@ -1,13 +1,11 @@
 package org.example.gamehaven.ui.controllers;
 
-import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import org.example.gamehaven.core.SceneManager;
+import javafx.scene.control.*;
 import org.example.gamehaven.auth.User;
+import org.example.gamehaven.core.SceneManager;
 
 public class LeaderboardController {
     @FXML private TableView<User> overallTable;
@@ -18,38 +16,42 @@ public class LeaderboardController {
 
     @FXML
     public void initialize() {
+        setupTables();
+        loadData();
         setupTableResizing();
-        // Initial resize
-        Platform.runLater(this::resizeAllTables);
+    }
+
+    private void setupTables() {
+        overallTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        tttTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        c4Table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        checkersTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    }
+
+    private void loadData() {
+        ObservableList<User> sampleData = FXCollections.observableArrayList(
+                new User("1", "Player1"),
+                new User("2", "Player2")
+        );
+
+        overallTable.setItems(sampleData);
+        tttTable.setItems(sampleData);
+        c4Table.setItems(sampleData);
+        checkersTable.setItems(sampleData);
     }
 
     private void setupTableResizing() {
-        // Listen to tab changes to resize the current table
-        leaderboardTabPane.getSelectionModel().selectedItemProperty().addListener(
-                (obs, oldTab, newTab) -> resizeCurrentTable());
-
-        // Listen to width changes of the tab pane
-        leaderboardTabPane.widthProperty().addListener(
-                (obs, oldVal, newVal) -> resizeAllTables());
-
         leaderboardTabPane.widthProperty().addListener((obs, oldVal, newVal) -> {
             updateTabWidths();
+            resizeAllTables();
         });
     }
 
-    private void resizeCurrentTable() {
-        TableView<?> currentTable = getCurrentTableView();
-        if (currentTable != null) {
-            resizeTable(currentTable);
+    private void updateTabWidths() {
+        double tabWidth = leaderboardTabPane.getWidth() / leaderboardTabPane.getTabs().size();
+        for (Tab tab : leaderboardTabPane.getTabs()) {
+            tab.setStyle("-fx-pref-width: " + Math.max(tabWidth, 120) + "px;");
         }
-    }
-
-    private TableView<?> getCurrentTableView() {
-        Tab selectedTab = leaderboardTabPane.getSelectionModel().getSelectedItem();
-        if (selectedTab != null && selectedTab.getContent() instanceof TableView) {
-            return (TableView<?>) selectedTab.getContent();
-        }
-        return null;
     }
 
     private void resizeAllTables() {
@@ -60,31 +62,18 @@ public class LeaderboardController {
     }
 
     private void resizeTable(TableView<?> table) {
-        if (table == null || table.getColumns().isEmpty()) return;
-
-        // Get available width (subtract 10px for padding/borders)
-        double availableWidth = table.getWidth() - 10;
-        int columnCount = table.getColumns().size();
-
-        if (availableWidth > 0 && columnCount > 0) {
-            double columnWidth = availableWidth / columnCount;
-
-            // Force all columns to this width (override any prefWidth)
-            for (TableColumn<?, ?> column : table.getColumns()) {
-                column.setPrefWidth(columnWidth);
-            }
+        if (table != null) {
+            table.setPrefWidth(leaderboardTabPane.getWidth() - 20);
         }
     }
 
-    private void updateTabWidths() {
-        double tabWidth = leaderboardTabPane.getWidth() / leaderboardTabPane.getTabs().size();
-        for (Tab tab : leaderboardTabPane.getTabs()) {
-            double finalWidth = Math.max(tabWidth, 100);
-            tab.setStyle("-fx-pref-width: " + finalWidth + "px;");
-        }
+    @FXML
+    private void handleRefresh() {
+        loadData();
     }
 
-    // Your existing handler methods
-    @FXML private void handleRefresh() {SceneManager.loadScene("lobby/main.fxml");}
-    @FXML private void handleBack() { /* ... */ }
+    @FXML
+    private void handleBack() {
+        SceneManager.loadScene("lobby/main.fxml");
+    }
 }
