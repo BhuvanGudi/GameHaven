@@ -2,12 +2,18 @@ package org.example.gamehaven.ui.controllers;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import org.example.gamehaven.auth.User;
 import org.example.gamehaven.auth.UserSession;
 import org.example.gamehaven.core.SceneManager;
@@ -15,9 +21,11 @@ import org.example.gamehaven.games.tictactoe.TicTacToeGame;
 import org.example.gamehaven.games.tictactoe.TicTacToeAI;
 import org.example.gamehaven.multiplayer.GameServer;
 import org.example.gamehaven.core.GameMode;
+import org.example.gamehaven.ui.components.ChatBox;
 import org.example.gamehaven.utils.SoundManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,15 +34,19 @@ public class TicTacToeController {
     public Button quitButton;
     private static final Logger logger = LoggerFactory.getLogger(TicTacToeController.class);
     public Button rulesButton;
+    public StackPane chatContent;
     @FXML private GridPane gameBoard;
     @FXML private Label statusLabel;
     @FXML private Label playerLabel;
+    @FXML private VBox chatContainer;
 
     private TicTacToeGame game;
     private TicTacToeAI ai;
     private GameServer gameServer;
     private boolean isMultiplayer;
     private boolean isPlayerTurn;
+    private ChatBox chatBoxController;
+    private boolean isChatVisible = false;
 
     @FXML
     public void initialize() {
@@ -52,6 +64,7 @@ public class TicTacToeController {
         isPlayerTurn = true; // Assuming the first player starts
 
         initializeBoard();
+        initializeChatBox();
         updateGameStatus();
     }
 
@@ -86,7 +99,6 @@ public class TicTacToeController {
 
         updateGameStatus();
 
-        // If a single player and game isn't over, let AI make a move
         if (!isMultiplayer && !game.isGameOver()) {
             isPlayerTurn = false;
             makeAIMove();
@@ -96,7 +108,7 @@ public class TicTacToeController {
     private void makeAIMove() {
         new Thread(() -> {
             try {
-                Thread.sleep(500); // Small delay for better UX
+                Thread.sleep(500);
                 int[] move = ai.makeMove(game.getBoard());
                 if (move != null) {
                     Platform.runLater(() -> {
@@ -104,6 +116,10 @@ public class TicTacToeController {
                         assert button != null;
                         button.setText(String.valueOf(game.getCurrentPlayer()));
                         game.makeMove(move[0], move[1]);
+                        if (Math.random() < 0.3) {
+                            String[] moveTaunts = {"*yawns*", "Predictable...", "🤖 *activates doom protocol*"};
+                            chatBoxController.addGameMessage("AI: " + moveTaunts[(int) (Math.random() * moveTaunts.length)]);
+                        }
                         updateGameStatus();
                         isPlayerTurn = true;
                     });
@@ -126,7 +142,6 @@ public class TicTacToeController {
         return null;
     }
 
-    // Modify the updateGameStatus method
     private void updateGameStatus() {
         if (game.checkWin()) {
             statusLabel.setText(game.getCurrentPlayer() + " wins!");
@@ -192,10 +207,25 @@ public class TicTacToeController {
         }
     }
 
-    private void setupMultiplayer() {
-        // Implement multiplayer logic using GameServer
-        // This would involve setting up listeners for opponent's moves
-        // and updating the UI accordingly
+    private void setupMultiplayer() {}
+
+    @FXML
+    private void toggleChat() {
+        TranslateTransition transition = new TranslateTransition(Duration.millis(300), chatContainer);
+        transition.setToY(isChatVisible ? 0 : -300); // Slides up/down
+        transition.play();
+        isChatVisible = !isChatVisible;
+    }
+
+    private void initializeChatBox() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/gamehaven/fxml/chatbox/chatbox.fxml"));
+            Parent chatBox = loader.load();
+            chatBoxController = loader.getController();
+            chatContent.getChildren().add(chatBox);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

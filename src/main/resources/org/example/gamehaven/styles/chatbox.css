@@ -1,0 +1,91 @@
+.chat-container {
+    -fx-background-color: #3d3d3d;
+    -fx-border-color: #5d5d5d;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);
+}
+
+.chat-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #e0e0e0;
+}
+
+.chat-messages {
+    -fx-background-color: #4d4d4d;
+    -fx-border-color: #5d5d5d;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #e0e0e0;
+}
+
+.chat-input {
+    -fx-background-color: #4d4d4d;
+    -fx-text-fill: #e0e0e0;
+    -fx-border-color: #5d5d5d;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #a0a0a0;
+}
+
+.chat-send-button {
+    -fx-background-color: #5d5d5d;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-weight: bold;
+    -fx-border-color: #6d6d6d;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+    -fx-min-width: 60px;
+}
+
+.chat-send-button:hover {
+    -fx-background-color: #6d6d6d;
+}
+
+.chat-toggle-button {
+    -fx-background-color: #5d5d5d;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-min-width: 100px;
+    -fx-border-color: #6d6d6d;
+    -fx-border-width: 1px;
+}
+
+.chat-toggle-button:hover {
+    -fx-background-color: #6d6d6d;
+}
+
+.slide-up-chat {
+    -fx-background-color: #3d3d3d;
+    -fx-border-color: #5d5d5d;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px 5px 0 0;
+    -fx-background-radius: 5px 5px 0 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 3);
+}
+
+.chat-handle {
+    -fx-background-color: #5d5d5d;
+    -fx-cursor: hand;
+    -fx-padding: 5px;
+    -fx-border-color: #6d6d6d;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.chat-handle:hover {
+    -fx-background-color: #6d6d6d;
+}
+
+.chat-handle-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+}

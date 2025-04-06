@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
 public class GameServer {
     private DatabaseReference database;
@@ -124,5 +125,56 @@ public class GameServer {
 
     public interface MoveListener {
         void onMoveReceived(int column);
+    }
+
+    public void sendChatMessage(String gameId, String message) {
+        // Implement sending a chat message to server
+        DatabaseReference chatRef = FirebaseDatabase.getInstance()
+                .getReference("games")
+                .child(gameId)
+                .child("chat");
+
+        Map<String, Object> chatMessage = new HashMap<>();
+        chatMessage.put("sender", UserSession.getCurrentUser().getUsername());
+        chatMessage.put("message", message);
+        chatMessage.put("timestamp", ServerValue.TIMESTAMP);
+
+        chatRef.push().setValueAsync(chatMessage);
+    }
+
+    public void setupChatListener(String gameId, BiConsumer<String, String> messageHandler) {
+        DatabaseReference chatRef = FirebaseDatabase.getInstance()
+                .getReference("games")
+                .child(gameId)
+                .child("chat");
+
+        chatRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
+                String sender = snapshot.child("sender").getValue(String.class);
+                String message = snapshot.child("message").getValue(String.class);
+                messageHandler.accept(sender, message);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

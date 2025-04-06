@@ -30,4 +30,5 @@ module org.example.duplicategame {
     exports org.example.gamehaven.games.tictactoe to javafx.fxml;
     exports org.example.gamehaven.games.connect4 to javafx.fxml;
     exports org.example.gamehaven.games.checkers to javafx.fxml;
+    opens org.example.gamehaven.ui.components to javafx.fxml;
 }
