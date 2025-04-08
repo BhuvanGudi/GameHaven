@@ -1,11 +1,16 @@
 package org.example.gamehaven.ui.controllers;
 
 import javafx.animation.PauseTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
@@ -15,10 +20,15 @@ import org.example.gamehaven.core.GameMode;
 import org.example.gamehaven.core.SceneManager;
 import org.example.gamehaven.games.connect4.ConnectFourGame;
 import org.example.gamehaven.games.connect4.ConnectFourAI;
+import org.example.gamehaven.ui.components.ChatBox;
 import org.example.gamehaven.utils.SoundManager;
+
+import java.io.IOException;
 
 public class ConnectFourController {
     public Button rulesButton;
+    public VBox chatContainer;
+    public StackPane chatContent;
     @FXML private GridPane gameBoard;
     @FXML private Label statusLabel;
     @FXML private Label playerLabel;
@@ -30,6 +40,8 @@ public class ConnectFourController {
     private ConnectFourAI ai;
     private boolean vsAI;
     private SoundManager soundManager;
+    private ChatBox chatBoxController;
+    private boolean isChatVisible = false;
 
     @FXML
     public void initialize() {
@@ -37,6 +49,7 @@ public class ConnectFourController {
         ai = new ConnectFourAI();
         vsAI = LobbyController.selectedGameMode == GameMode.SINGLE_PLAYER;
         initializeBoard();
+        initializeChatBox();
         updateUI();
     }
 
@@ -102,6 +115,10 @@ public class ConnectFourController {
             int col = ai.makeMove(game);
             if (col != -1) {
                 game.makeMove(col);
+                if (Math.random() < 0.3) {
+                    String[] moveTaunts = {"*yawns*", "Predictable...", "🤖 *activates doom protocol*"};
+                    chatBoxController.addGameMessage("AI: " + moveTaunts[(int) (Math.random() * moveTaunts.length)]);
+                }
                 updateUI();
             }
         });
@@ -129,6 +146,25 @@ public class ConnectFourController {
         game = new ConnectFourGame();
         initializeBoard();
         updateUI();
+    }
+
+    @FXML
+    private void toggleChat() {
+        TranslateTransition transition = new TranslateTransition(Duration.millis(300), chatContainer);
+        transition.setToY(isChatVisible ? 0 : -300); // Slides up/down
+        transition.play();
+        isChatVisible = !isChatVisible;
+    }
+
+    private void initializeChatBox() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/gamehaven/fxml/chatbox/chatbox.fxml"));
+            Parent chatBox = loader.load();
+            chatBoxController = loader.getController();
+            chatContent.getChildren().add(chatBox);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

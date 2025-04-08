@@ -78,4 +78,17 @@
             </HBox>
         </VBox>
     </VBox>
+
+    <VBox fx:id="chatContainer"
+          styleClass="slide-up-chat"
+          AnchorPane.bottomAnchor="-250.0"
+          AnchorPane.rightAnchor="20.0"
+          prefHeight="300.0"
+          prefWidth="350.0">
+        <HBox styleClass="chat-handle" alignment="CENTER" onMouseClicked="#toggleChat">
+            <Label text="Game Chat" styleClass="chat-handle-label"/>
+        </HBox>
+
+        <StackPane fx:id="chatContent" VBox.vgrow="ALWAYS"/>
+    </VBox>
 </AnchorPane>

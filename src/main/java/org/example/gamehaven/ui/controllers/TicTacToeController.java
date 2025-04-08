@@ -61,7 +61,7 @@ public class TicTacToeController {
             ai = new TicTacToeAI();
             playerLabel.setText("Player vs Computer");
         }
-        isPlayerTurn = true; // Assuming the first player starts
+        isPlayerTurn = true;
 
         initializeBoard();
         initializeChatBox();
@@ -212,7 +212,7 @@ public class TicTacToeController {
     @FXML
     private void toggleChat() {
         TranslateTransition transition = new TranslateTransition(Duration.millis(300), chatContainer);
-        transition.setToY(isChatVisible ? 0 : -300); // Slides up/down
+        transition.setToY(isChatVisible ? 0 : -300);
         transition.play();
         isChatVisible = !isChatVisible;
     }

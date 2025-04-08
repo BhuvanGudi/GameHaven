@@ -1,11 +1,14 @@
 package org.example.gamehaven.ui.controllers;
 
 import javafx.animation.PauseTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -16,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -28,14 +32,18 @@ import org.example.gamehaven.games.checkers.CheckersGame;
 import org.example.gamehaven.games.checkers.Piece;
 import org.example.gamehaven.multiplayer.GameServer;
 import org.example.gamehaven.core.GameMode;
+import org.example.gamehaven.ui.components.ChatBox;
 import org.example.gamehaven.utils.SoundManager;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class CheckersController {
     public Button restartButton;
     public Button quitButton;
     public Button rulesButton;
+    public VBox chatContainer;
+    public StackPane chatContent;
     @FXML private GridPane gameBoard;
     @FXML private Label statusLabel;
     @FXML private Label playerLabel;
@@ -46,6 +54,8 @@ public class CheckersController {
     private Piece selectedPiece;
     private CheckersAI ai;
     private boolean vsAI;
+    private ChatBox chatBoxController;
+    private boolean isChatVisible = false;
 
     @FXML
     public void initialize() {
@@ -144,6 +154,10 @@ public class CheckersController {
             Piece piece = game.getPieceAt(move[0], move[1]);
             game.makeMove(piece, move[2], move[3]);
             updateBoard();
+            if (Math.random() < 0.3) {
+                String[] moveTaunts = {"*yawns*", "Predictable...", "🤖 *activates doom protocol*"};
+                chatBoxController.addGameMessage("AI: " + moveTaunts[(int) (Math.random() * moveTaunts.length)]);
+            }
             updateUI();
         }
     }
@@ -234,6 +248,25 @@ public class CheckersController {
         }
     }
 
+    @FXML
+    private void toggleChat() {
+        TranslateTransition transition = new TranslateTransition(Duration.millis(300), chatContainer);
+        transition.setToY(isChatVisible ? 0 : -300);
+        transition.play();
+        isChatVisible = !isChatVisible;
+    }
+
+    private void initializeChatBox() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/gamehaven/fxml/chatbox/chatbox.fxml"));
+            Parent chatBox = loader.load();
+            chatBoxController = loader.getController();
+            chatContent.getChildren().add(chatBox);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void setupMultiplayer() {
 
     }
@@ -252,5 +285,8 @@ public class CheckersController {
 
     public void handleRules(ActionEvent actionEvent) {
         SceneManager.showRulesDialog("rules/checkers_rules.fxml");
+    }
+
+    public void toggleChat(MouseEvent mouseEvent) {
     }
 }
