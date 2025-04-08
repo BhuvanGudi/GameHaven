@@ -86,6 +86,7 @@ public class CheckersController {
         });
 
         initializeBoard();
+        initializeChatBox();
         updateCurrentPlayer();
     }
 
@@ -285,8 +286,5 @@ public class CheckersController {
 
     public void handleRules(ActionEvent actionEvent) {
         SceneManager.showRulesDialog("rules/checkers_rules.fxml");
-    }
-
-    public void toggleChat(MouseEvent mouseEvent) {
     }
 }
